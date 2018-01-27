@@ -212,7 +212,7 @@ a {
 }
 #container #mobile-nav {
   display: none;
-  background: url("../img/bg.jpg") #515457;
+  background: url("http://deelmind.cn/img/bg.jpg") #515457;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -251,7 +251,7 @@ a {
   margin: 3px;
 }
 #container .left-col {
-  background: url("../img/bg.jpg") #515457;
+  background: url("http://deelmind.cn/img/bg.jpg") #515457;
   width: 300px;
   position: fixed;
   opacity: 1;
@@ -2120,72 +2120,72 @@ a {
   margin-right: 0;
 }
 #header .header-nav .social a.weibo {
-  background: url("../img/weibo.png") center no-repeat #f00;
+  background: url("http://deelmind.cn/img/weibo.png") center no-repeat #f00;
   border: 1px solid #f00;
 }
 #header .header-nav .social a.rss {
-  background: url("../img/rss.png") center no-repeat #ef7522;
+  background: url("http://deelmind.cn/img/rss.png") center no-repeat #ef7522;
   border: 1px solid #ef7522;
 }
 #header .header-nav .social a.github {
-  background: url("../img/github.png") center no-repeat #000;
+  background: url("http://deelmind.cn/img/github.png") center no-repeat #000;
   border: 1px solid #000;
 }
 #header .header-nav .social a.facebook {
-  background: url("../img/facebook.png") center no-repeat #3b5998;
+  background: url("http://deelmind.cn/img/facebook.png") center no-repeat #3b5998;
   border: 1px solid #3b5998;
 }
 #header .header-nav .social a.google {
-  background: url("../img/google.png") center no-repeat #f00;
+  background: url("http://deelmind.cn/img/google.png") center no-repeat #f00;
   border: 1px solid #f00;
 }
 #header .header-nav .social a.twitter {
-  background: url("../img/twitter.png") center no-repeat #1ab2e8;
+  background: url("http://deelmind.cn/img/twitter.png") center no-repeat #1ab2e8;
   border: 1px solid #1ab2e8;
 }
 #header .header-nav .social a.linkedin {
-  background: url("../img/linkedin.png") center no-repeat #00639a;
+  background: url("http://deelmind.cn/img/linkedin.png") center no-repeat #00639a;
   border: 1px solid #00639a;
 }
 #header .header-nav .social a.zhihu {
-  background: url("../img/zhihu.png") center no-repeat #0663c1;
+  background: url("http://deelmind.cn/img/zhihu.png") center no-repeat #0663c1;
   border: 1px solid #0663c1;
 }
-#header .header-nav .social a.douban {
-  background: url("../img/douban.png") center no-repeat #f58800;
+#header .header-nav .social a.Jianshu {
+  background: url("http://deelmind.cn/img/Jianshu.png") center no-repeat #f58800;
   border: 1px solid #f58800;
 }
 #header .header-nav .social a.mail {
-  background: url("../img/mail.png") center no-repeat #3b98ba;
+  background: url("http://deelmind.cn/img/mail.png") center no-repeat #3b98ba;
   border: 1px solid #3b98ba;
 }
 #header .header-nav .social a.QQ {
-  background: url("../img/qq.png") center no-repeat #00abff;
+  background: url("http://deelmind.cn/img/qq.png") center no-repeat #00abff;
   border: 1px solid #00abff;
 }
 #header .header-nav .social a.wechat {
-  background: url("../img/wechat.png") center no-repeat #51c332;
+  background: url("http://deelmind.cn/img/wechat.png") center no-repeat #51c332;
   border: 1px solid #51c332;
 }
-#header .header-nav .social a.pinterest {
-  background: url("../img/youtube.png") center no-repeat #cd1f28;
+#header .header-nav .social a.youtube {
+  background: url("http://deelmind.cn/img/youtube.png") center no-repeat #cd1f28;
   border: 1px solid #cd1f28;
 }
 #header .header-nav .social a.pinboard {
-  background: url("../img/pinboard.png") center no-repeat #224cf4;
+  background: url("http://deelmind.cn/img/pinboard.png") center no-repeat #224cf4;
   border: 1px solid #224cf4;
 }
 #header .header-nav .social a.stackoverflow {
-  background: url("../img/stackoverflow.png") center no-repeat #fe7a15;
+  background: url("http://deelmind.cn/img/stackoverflow.png") center no-repeat #fe7a15;
   border: 1px solid #fe7a15;
 }
 #header .header-nav .social a.Instagram {
-  background: url("../img/instagram.png") center no-repeat #125688;
+  background: url("http://deelmind.cn/img/instagram.png") center no-repeat #125688;
   border: 1px solid #125688;
 }
-#header .header-nav .social a.segmentfault {
-  background: url("../img/segmentfault.png") center no-repeat #009a61;
-  border: 1px solid #009a61;
+#header .header-nav .social a.googlePlus {
+  background: url("http://deelmind.cn/img/googlePlus.png") center no-repeat #f00;
+  border: 1px solid #f00;
 }
 #header .switch-part {
   width: 100%;
