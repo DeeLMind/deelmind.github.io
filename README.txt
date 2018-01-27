@@ -1,1 +1,1 @@
-# Blog - https://www.deelmind.cn
+# Blog - http://www.deelmind.cn
