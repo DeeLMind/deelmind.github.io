@@ -2171,9 +2171,9 @@ a {
   background: url("http://deelmind.cn/img/youtube.png") center no-repeat #cd1f28;
   border: 1px solid #cd1f28;
 }
-#header .header-nav .social a.pinboard {
-  background: url("http://deelmind.cn/img/pinboard.png") center no-repeat #224cf4;
-  border: 1px solid #224cf4;
+#header .header-nav .social a.blibli {
+  background: url("http://deelmind.cn/img/bli.png") center no-repeat #cd1f28;
+  border: 1px solid #cd1f28;
 }
 #header .header-nav .social a.stackoverflow {
   background: url("http://deelmind.cn/img/stackoverflow.png") center no-repeat #fe7a15;
