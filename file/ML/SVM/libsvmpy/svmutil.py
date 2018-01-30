@@ -2,8 +2,8 @@
 
 import os
 import sys
-from svm import *
-from svm import __all__ as svm_all
+from MLFrame.libsvmpy.svm import *
+from MLFrame.libsvmpy.svm import __all__ as svm_all
 
 
 __all__ = ['evaluations', 'svm_load_model', 'svm_predict', 'svm_read_problem',
@@ -186,7 +186,7 @@ def svm_predict(y, x, m, options=""):
 	       error, and squared correlation coefficient (for regression).
 	p_vals: a list of decision values or probability estimates (if '-b 1'
 	        is specified). If k is the number of classes, for decision values,
-	        each element includes results of predicting k(k-1)/2 binary-class
+	        each element includes results of predicting k(k-1)/2 Binary-class
 	        SVMs. For probabilities, each element contains k values indicating
 	        the probability that the testing instance is in each class.
 	        Note that the order of classes here is the same as 'model.label'
