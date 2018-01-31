@@ -14,7 +14,7 @@ circleData = os.getcwd() + r'/data/circle.txt'
 Y,X = svm_read_problem(circleData)
 
 # 训练参数，其实就是条件方程的各个参数
-arg = '-t 2' # 2 代表高斯核函数
+arg = '-t 0' # 2 代表高斯核函数
 
 # 训练得到模型m
 m = svm_train(Y,X,arg)
