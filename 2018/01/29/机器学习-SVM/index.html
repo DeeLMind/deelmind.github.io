@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://deelmind.cn/img/ML/SVM/circle.gif">
 <meta property="og:image" content="http://deelmind.cn/img/ML/SVM/10.png">
 <meta property="og:image" content="http://deelmind.cn/img/ML/SVM/11.png">
-<meta property="og:updated_time" content="2018-04-09T11:45:46.337Z">
+<meta property="og:updated_time" content="2018-04-09T13:09:58.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习-SVM">
 <meta name="twitter:description" content="简介:机器学习，小白也能看得懂 , 从理论到实践！！！">
@@ -132,6 +132,8 @@
                         
                             <li><a href="/toturial">系统教程</a></li>
                         
+                            <li><a href="/video">视频教学</a></li>
+                        
                             <li><a href="/about">关于作者</a></li>
                         
                             <li><a href="/resume">我的简历</a></li>
@@ -231,6 +233,8 @@
                 
                     <li><a href="/toturial">系统教程</a></li>
                 
+                    <li><a href="/video">视频教学</a></li>
+                
                     <li><a href="/about">关于作者</a></li>
                 
                     <li><a href="/resume">我的简历</a></li>
@@ -315,6 +319,9 @@
       
           
         <p>简介:机器学习，小白也能看得懂 , 从理论到实践！！！<br><a id="more"></a></p>
+<h1 id="视频教学-Youtube-amp-Blibli"><a href="#视频教学-Youtube-amp-Blibli" class="headerlink" title="视频教学(Youtube &amp; Blibli)"></a>视频教学(Youtube &amp; Blibli)</h1><p><a href="https://www.youtube.com/watch?v=dAhtAUdMuXw" target="_blank" rel="noopener">Youtube</a><br><a href="https://www.bilibili.com/video/av20148148" target="_blank" rel="noopener">Bilibili</a></p>
+<div class="video-container"><iframe src="//www.youtube.com/embed/dAhtAUdMuXw" frameborder="0" allowfullscreen></iframe></div>
+<div class="bili_video"><embed height="480" width="640" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://share.acg.tv/flash.swf" flashvars="aid=NaN&page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></div>
 <h1 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h1><ul>
 <li>机器学习就是<a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" target="_blank" rel="noopener">wiki</a></li>
 <li>就是利用数学算法，结合大量数据，建立对应数学模型，对未来的数据进行分类（分类-Classification），或者预测趋势(回归-Regression)。</li>
@@ -450,7 +457,7 @@
         <p><span>本文标题:</span><a href="/2018/01/29/机器学习-SVM/">机器学习-SVM</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
         <p><span>发布时间:</span>2018年01月29日 - 09时38分</p>
-        <p><span>最后更新:</span>2018年04月09日 - 19时45分</p>
+        <p><span>最后更新:</span>2018年04月09日 - 21时09分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/01/29/机器学习-SVM/" title="机器学习-SVM">http://deelmind.github.com/2018/01/29/机器学习-SVM/</a>
             <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/01/29/机器学习-SVM/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -488,7 +495,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是机器学习？"><span class="toc-number">1.</span> <span class="toc-text">什么是机器学习？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是SVM？"><span class="toc-number">2.</span> <span class="toc-text">什么是SVM？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是向量？"><span class="toc-number">3.</span> <span class="toc-text">什么是向量？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#支持向量机（SVM）"><span class="toc-number">4.</span> <span class="toc-text">支持向量机（SVM）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备数据"><span class="toc-number">4.0.1.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么分类"><span class="toc-number">4.0.2.</span> <span class="toc-text">怎么分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#专业名称："><span class="toc-number">4.0.3.</span> <span class="toc-text">专业名称：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先找二维平面（也就是上图点的分类-线）"><span class="toc-number">4.0.4.</span> <span class="toc-text">先找二维平面（也就是上图点的分类 线）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监督学习："><span class="toc-number">4.0.5.</span> <span class="toc-text">监督学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非监督学习："><span class="toc-number">4.0.6.</span> <span class="toc-text">非监督学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所以得到一个约束方程"><span class="toc-number">4.0.7.</span> <span class="toc-text">所以得到一个约束方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对偶问题"><span class="toc-number">4.0.8.</span> <span class="toc-text">对偶问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性不可分"><span class="toc-number">4.0.9.</span> <span class="toc-text">线性不可分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用核函数"><span class="toc-number">4.0.10.</span> <span class="toc-text">利用核函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是核函数"><span class="toc-number">4.0.11.</span> <span class="toc-text">什么是核函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#核函数举例"><span class="toc-number">4.0.12.</span> <span class="toc-text">核函数举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matlab代码"><span class="toc-number">4.0.12.1.</span> <span class="toc-text">Matlab代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Matlab代码-1"><span class="toc-number">4.0.12.2.</span> <span class="toc-text">Matlab代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码地址"><span class="toc-number">5.</span> <span class="toc-text">代码地址</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#视频教学-Youtube-amp-Blibli"><span class="toc-number">1.</span> <span class="toc-text">视频教学(Youtube &amp; Blibli)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是机器学习？"><span class="toc-number">2.</span> <span class="toc-text">什么是机器学习？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是SVM？"><span class="toc-number">3.</span> <span class="toc-text">什么是SVM？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是向量？"><span class="toc-number">4.</span> <span class="toc-text">什么是向量？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#支持向量机（SVM）"><span class="toc-number">5.</span> <span class="toc-text">支持向量机（SVM）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备数据"><span class="toc-number">5.0.1.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么分类"><span class="toc-number">5.0.2.</span> <span class="toc-text">怎么分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#专业名称："><span class="toc-number">5.0.3.</span> <span class="toc-text">专业名称：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先找二维平面（也就是上图点的分类-线）"><span class="toc-number">5.0.4.</span> <span class="toc-text">先找二维平面（也就是上图点的分类 线）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监督学习："><span class="toc-number">5.0.5.</span> <span class="toc-text">监督学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非监督学习："><span class="toc-number">5.0.6.</span> <span class="toc-text">非监督学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所以得到一个约束方程"><span class="toc-number">5.0.7.</span> <span class="toc-text">所以得到一个约束方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对偶问题"><span class="toc-number">5.0.8.</span> <span class="toc-text">对偶问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性不可分"><span class="toc-number">5.0.9.</span> <span class="toc-text">线性不可分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用核函数"><span class="toc-number">5.0.10.</span> <span class="toc-text">利用核函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是核函数"><span class="toc-number">5.0.11.</span> <span class="toc-text">什么是核函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#核函数举例"><span class="toc-number">5.0.12.</span> <span class="toc-text">核函数举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matlab代码"><span class="toc-number">5.0.12.1.</span> <span class="toc-text">Matlab代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Matlab代码-1"><span class="toc-number">5.0.12.2.</span> <span class="toc-text">Matlab代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码地址"><span class="toc-number">6.</span> <span class="toc-text">代码地址</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
