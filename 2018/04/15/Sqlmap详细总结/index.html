@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sqlmap详细总结 | DeeLMind-Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介:Sqlmap命令行帮助总结">
+<meta name="keywords" content="渗透,WEB,Sqlmap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sqlmap详细总结">
+<meta property="og:url" content="http://deelmind.github.com/2018/04/15/Sqlmap详细总结/index.html">
+<meta property="og:site_name" content="DeeLMind-Blog">
+<meta property="og:description" content="简介:Sqlmap命令行帮助总结">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-06T07:00:42.892Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sqlmap详细总结">
+<meta name="twitter:description" content="简介:Sqlmap命令行帮助总结">
+  
+    <link rel="alternative" href="/atom.xml" title="DeeLMind-Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="么么哒">DeeLMind</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">自醒 | 自省</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+
+
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/note">随笔记录</a></li>
+                        
+                            <li><a href="/work">作品展示</a></li>
+                        
+                            <li><a href="/toturial">系统教程</a></li>
+                        
+                            <li><a href="/video">视频教学</a></li>
+                        
+                            <li><a href="/about">关于作者</a></li>
+                        
+                            <li><a href="/resume">简历简介</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=DeeLMind@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/DeeLMind" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/DeeLMind/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/u/5588510745#_loginLayer_1516970488947" title="weibo">weibo</a>
+                            
+                                <a class="fl twitter" target="_blank" href="https://twitter.com/DeeLMind" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="https://www.linkedin.com/in/%E8%B4%BA%E9%BE%99-%E7%89%9B-364576158/" title="linkedin">linkedin</a>
+                            
+                                <a class="fl facebook" target="_blank" href="https://www.facebook.com/DeeLMind/" title="facebook">facebook</a>
+                            
+                                <a class="fl youtube" target="_blank" href="https://www.youtube.com/channel/UCWrelXDdvGYo6CCsGKMmuSQ?view_as=subscriber" title="youtube">youtube</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://tool.gljlw.com/qq/?qq=759256729" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://deelmind.cn/about/" title="wechat">wechat</a>
+                            
+                                <a class="fl Jianshu" target="_blank" href="https://www.jianshu.com/u/e3b312dc2c98" title="Jianshu">Jianshu</a>
+                            
+                                <a class="fl blibli" target="_blank" href="https://space.bilibili.com/282616786/#/" title="blibli">blibli</a>
+                            
+                                <a class="fl stackoverflow" target="_blank" href="https://stackoverflow.com/users/9187890/deelmind" title="stackoverflow">stackoverflow</a>
+                            
+                                <a class="fl Instagram" target="_blank" href="https://www.instagram.com/DeeLMind/" title="Instagram">Instagram</a>
+                            
+                                <a class="fl googlePlus" target="_blank" href="https://plus.google.com/u/2/105686643108048107214" title="googlePlus">googlePlus</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Note/" style="font-size: 20px;">Note</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Sqlmap/" style="font-size: 10px;">Sqlmap</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/渗透/" style="font-size: 10px;">渗透</a>
+                    </div>
+                </section>
+                
+
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/DeeLMind">DeeLMind（我）</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ggsec.cn/">Demonsec</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/QKSword/">QKSword（儿子）</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://strivemario.github.io/">Strivemario(帅哥)</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://ring3.xyz/">Y11en(龙哥)</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">DeeLMind</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">DeeLMind</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">自醒 | 自省</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/note">随笔记录</a></li>
+                
+                    <li><a href="/work">作品展示</a></li>
+                
+                    <li><a href="/toturial">系统教程</a></li>
+                
+                    <li><a href="/video">视频教学</a></li>
+                
+                    <li><a href="/about">关于作者</a></li>
+                
+                    <li><a href="/resume">简历简介</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=DeeLMind@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/DeeLMind" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/DeeLMind/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/5588510745#_loginLayer_1516970488947" title="weibo">weibo</a>
+                    
+                        <a class="twitter" target="_blank" href="https://twitter.com/DeeLMind" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="https://www.linkedin.com/in/%E8%B4%BA%E9%BE%99-%E7%89%9B-364576158/" title="linkedin">linkedin</a>
+                    
+                        <a class="facebook" target="_blank" href="https://www.facebook.com/DeeLMind/" title="facebook">facebook</a>
+                    
+                        <a class="youtube" target="_blank" href="https://www.youtube.com/channel/UCWrelXDdvGYo6CCsGKMmuSQ?view_as=subscriber" title="youtube">youtube</a>
+                    
+                        <a class="QQ" target="_blank" href="http://tool.gljlw.com/qq/?qq=759256729" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://deelmind.cn/about/" title="wechat">wechat</a>
+                    
+                        <a class="Jianshu" target="_blank" href="https://www.jianshu.com/u/e3b312dc2c98" title="Jianshu">Jianshu</a>
+                    
+                        <a class="blibli" target="_blank" href="https://space.bilibili.com/282616786/#/" title="blibli">blibli</a>
+                    
+                        <a class="stackoverflow" target="_blank" href="https://stackoverflow.com/users/9187890/deelmind" title="stackoverflow">stackoverflow</a>
+                    
+                        <a class="Instagram" target="_blank" href="https://www.instagram.com/DeeLMind/" title="Instagram">Instagram</a>
+                    
+                        <a class="googlePlus" target="_blank" href="https://plus.google.com/u/2/105686643108048107214" title="googlePlus">googlePlus</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Sqlmap详细总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/15/Sqlmap详细总结/" class="article-date">
+      <time datetime="2018-04-15T06:31:38.000Z" itemprop="datePublished">2018-04-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sqlmap详细总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sqlmap/">Sqlmap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透/">渗透</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>简介:Sqlmap命令行帮助总结</p>
+<a id="more"></a>
+<h1 id="什么是Sqlmap"><a href="#什么是Sqlmap" class="headerlink" title="什么是Sqlmap"></a>什么是Sqlmap</h1><p>SQLmap是一款用来检测与利用SQL注入漏洞的免费开源工具，对检测与利用的自动化处理（数据库指纹、访问底层文件系统、执行命令）</p>
+<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><p><a href="http://sqlmap.org/" target="_blank" rel="noopener">http://sqlmap.org/</a></p>
+<p>#支持注入类型</p>
+<ul>
+<li>布尔盲注，根据页面返回判断</li>
+<li>时间盲注</li>
+<li>报错注入</li>
+<li>联合注入</li>
+<li>堆查询注入</li>
+</ul>
+<h1 id="sqlmap支持的数据库有："><a href="#sqlmap支持的数据库有：" class="headerlink" title="sqlmap支持的数据库有："></a>sqlmap支持的数据库有：</h1><ul>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>Microsoft SQL Server</li>
+<li>Microsoft Access</li>
+<li>IBM DB2</li>
+<li>SQLite</li>
+<li>…</li>
+</ul>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><h3 id="参数：-v"><a href="#参数：-v" class="headerlink" title="参数：-v"></a>参数：-v</h3><p>如果你想观察sqlmap对一个点是进行了怎样的尝试判断以及读取数据的，可以使用-v参数。<br>共有七个等级，默认为1：<br>0、只显示python错误以及严重的信息。<br>1、同时显示基本信息和警告信息。（默认）<br>2、同时显示debug信息。<br>3、同时显示注入的payload。<br>4、同时显示HTTP请求。<br>5、同时显示HTTP响应头。<br>6、同时显示HTTP响应页面。<br>如果你想看到sqlmap发送的测试payload最好的等级就是3。</p>
+<h3 id="参数：-u或者–url"><a href="#参数：-u或者–url" class="headerlink" title="参数：-u或者–url"></a>参数：-u或者–url</h3><p>格式：http(s)://targeturl<br>例如：python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a></p>
+<h3 id="参数：-l"><a href="#参数：-l" class="headerlink" title="参数：-l"></a>参数：-l</h3><p>可以直接吧Burp proxy或者WebScarab proxy中的日志直接倒出来交给sqlmap来一个一个检测是否有注入。</p>
+<h3 id="参数：-m"><a href="#参数：-m" class="headerlink" title="参数：-m"></a>参数：-m</h3><p>从文本中获取多个目标扫描<br>文件中保存url格式如下，sqlmap会一个一个检测<br><a href="http://www.target1.com/index.php" target="_blank" rel="noopener">www.target1.com/index.php</a><br><a href="http://www.target2.com/index.asp?id=1" target="_blank" rel="noopener">www.target2.com/index.asp?id=1</a><br><a href="http://www.target3.com/index.asp" target="_blank" rel="noopener">www.target3.com/index.asp</a></p>
+<h3 id="参数：-r"><a href="#参数：-r" class="headerlink" title="参数：-r"></a>参数：-r</h3><p>从文件中加载HTTP请求<br>sqlmap可以从一个文本文件中获取HTTP请求，这样就可以跳过设置一些其他参数（比如cookie，POST数据，等等）。<br>比如文本文件内如下：<br>POST /vuln.php HTTP/1.1<br>Host: <a href="http://www.target.com" target="_blank" rel="noopener">www.target.com</a><br>User-Agent: Mozilla/4.0<br>id=1<br>POST /vuln.php HTTP/1.1<br>Host: <a href="http://www.target.com" target="_blank" rel="noopener">www.target.com</a><br>User-Agent: Mozilla/4.0<br>id=1<br>当请求是HTTPS的时候你需要配合这个–force-ssl参数来使用，或者你可以在Host头后面加上:443</p>
+<h3 id="参数：-g"><a href="#参数：-g" class="headerlink" title="参数：-g"></a>参数：-g</h3><p>处理Google的搜索结果<br>sqlmap可以测试注入Google的搜索结果中的GET参数（只获取前100个结果）。<br>例子：<br>python sqlmap.py -g “inurl:\”.php?id=1\””<br>python sqlmap.py -g “inurl:\”.php?id=1\””<br>此外可以使用-c参数加载sqlmap.conf文件里面的相关配置。</p>
+<h3 id="参数：–data"><a href="#参数：–data" class="headerlink" title="参数：–data"></a>参数：–data</h3><p>http数据<br>此参数是把数据以POST方式提交，sqlmap会像检测GET参数一样检测POST的参数。<br>例子：<br>python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –data=”id=1” -f –banner –dbs –users<br>python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –data=”id=1” -f –banner –dbs –users</p>
+<h3 id="参数：–param-del"><a href="#参数：–param-del" class="headerlink" title="参数：–param-del"></a>参数：–param-del</h3><p>参数拆分字符<br>当GET或POST的数据需要用其他字符分割测试参数的时候需要用到此参数。<br>例子：<br>python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –data=”query=foobar;id=1” –param-del=”;” -f –banner –dbs –users<br>python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –data=”query=foobar;id=1” –param-del=”;” -f –banner –dbs –users</p>
+<h3 id="参数：–cookie-–load-cookies-–drop-set-cookie"><a href="#参数：–cookie-–load-cookies-–drop-set-cookie" class="headerlink" title="参数：–cookie,–load-cookies,–drop-set-cookie"></a>参数：–cookie,–load-cookies,–drop-set-cookie</h3><p>HTTP cookie头<br>这个参数在以下两个方面很有用：<br>1、web应用需要登陆的时候。<br>2、你想要在这些头参数中测试SQL注入时。<br>可以通过抓包把cookie获取到，复制出来，然后加到–cookie参数里。<br>在HTTP请求中，遇到Set-Cookie的话，sqlmap会自动获取并且在以后的请求中加入，并且会尝试SQL注入。<br>如果你不想接受Set-Cookie可以使用–drop-set-cookie参数来拒接。<br>当你使用–cookie参数时，当返回一个Set-Cookie头的时候，sqlmap会询问你用哪个cookie来继续接下来的请求。当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数。</p>
+<h3 id="参数：–user-agent-–random-agent"><a href="#参数：–user-agent-–random-agent" class="headerlink" title="参数：–user-agent,–random-agent"></a>参数：–user-agent,–random-agent</h3><p>HTTP User-Agent头<br>默认情况下sqlmap的HTTP请求头中User-Agent值是：<br>sqlmap/1.0-dev-xxxxxxx (<a href="http://sqlmap.org" target="_blank" rel="noopener">http://sqlmap.org</a>)<br>sqlmap/1.0-dev-xxxxxxx (<a href="http://sqlmap.org" target="_blank" rel="noopener">http://sqlmap.org</a>)<br>可以使用–user-anget参数来修改，同时也可以使用–random-agnet参数来随机的从./txt/user-agents.txt中获取。<br>当–level参数设定为3或者3以上的时候，会尝试对User-Angent进行注入。</p>
+<h3 id="参数：–referer"><a href="#参数：–referer" class="headerlink" title="参数：–referer"></a>参数：–referer</h3><p>HTTP Referer头<br>sqlmap可以在请求中伪造HTTP中的referer，当–level参数设定为3或者3以上的时候会尝试对referer注入。</p>
+<h3 id="参数：–headers"><a href="#参数：–headers" class="headerlink" title="参数：–headers"></a>参数：–headers</h3><p>额外的HTTP头<br>可以通过–headers参数来增加额外的http头</p>
+<h3 id="参数：–auth-type-–auth-cred"><a href="#参数：–auth-type-–auth-cred" class="headerlink" title="参数：–auth-type,–auth-cred"></a>参数：–auth-type,–auth-cred</h3><p>HTTP认证保护<br>这些参数可以用来登陆HTTP的认证保护支持三种方式：<br>1、Basic<br>2、Digest<br>3、NTLM<br>例子：<br>Python    sqlmap.py    -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –auth-type Basic –auth-cred “testuser:testpass”<br>Python    sqlmap.py    -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –auth-type Basic –auth-cred “testuser:testpass”</p>
+<h3 id="参数：–auth-cert"><a href="#参数：–auth-cert" class="headerlink" title="参数：–auth-cert"></a>参数：–auth-cert</h3><p>HTTP协议的证书认证<br>当Web服务器需要客户端证书进行身份验证时，需要提供两个文件:key_file，cert_file。<br>key_file是格式为PEM文件，包含着你的私钥，cert_file是格式为PEM的连接文件。<br>参数：–proxy,–proxy-cred和–ignore-proxy<br>HTTP(S)代理<br>使用–proxy代理是格式为：<a href="http://url:port。" target="_blank" rel="noopener">http://url:port。</a><br>当HTTP(S)代理需要认证是可以使用–proxy-cred参数：username:password。<br>–ignore-proxy拒绝使用本地局域网的HTTP(S)代理。</p>
+<h3 id="参数：–delay"><a href="#参数：–delay" class="headerlink" title="参数：–delay"></a>参数：–delay</h3><p>HTTP请求延迟<br>可以设定两个HTTP(S)请求间的延迟，设定为0.5的时候是半秒，默认是没有延迟的。</p>
+<h3 id="参数：–timeout"><a href="#参数：–timeout" class="headerlink" title="参数：–timeout"></a>参数：–timeout</h3><p>设定超时时间<br>可以设定一个HTTP(S)请求超过多久判定为超时，10.5表示10.5秒，默认是30秒。</p>
+<h3 id="参数：–retries"><a href="#参数：–retries" class="headerlink" title="参数：–retries"></a>参数：–retries</h3><p>设定重试超时<br>当HTTP(S)超时时，可以设定重新尝试连接次数，默认是3次。</p>
+<h3 id="参数：–randomize"><a href="#参数：–randomize" class="headerlink" title="参数：–randomize"></a>参数：–randomize</h3><p>设定随机改变的参数值<br>可以设定某一个参数值在每一次请求中随机的变化，长度和类型会与提供的初始值一样。</p>
+<h3 id="参数：–scope"><a href="#参数：–scope" class="headerlink" title="参数：–scope"></a>参数：–scope</h3><p>利用正则过滤目标网址<br>例如：<br>python sqlmap.py -l burp.log –scope=”(www)?.target.(com|net|org)”<br>python sqlmap.py -l burp.log –scope=”(www)?.target.(com|net|org)”</p>
+<h3 id="参数：–safe-url-–safe-freq"><a href="#参数：–safe-url-–safe-freq" class="headerlink" title="参数：–safe-url,–safe-freq"></a>参数：–safe-url,–safe-freq</h3><p>避免过多的错误请求被屏蔽<br>有的web应用程序会在你多次访问错误的请求时屏蔽掉你以后的所有请求，这样在sqlmap进行探测或者注入的时候可能造成错误请求而触发这个策略，导致以后无法进行。<br>绕过这个策略有两种方式：<br>1、–safe-url：提供一个安全不错误的连接，每隔一段时间都会去访问一下。<br>2、–safe-freq：提供一个安全不错误的连接，每次测试请求之后都会再访问一边安全连接。<br>1、–safe-url：提供一个安全不错误的连接，每隔一段时间都会去访问一下。<br>2、–safe-freq：提供一个安全不错误的连接，每次测试请求之后都会再访问一边安全连接。</p>
+<h3 id="参数：–skip-urlencode"><a href="#参数：–skip-urlencode" class="headerlink" title="参数：–skip-urlencode"></a>参数：–skip-urlencode</h3><p>关掉URL参数值编码<br>根据参数位置，他的值默认将会被URL编码，但是有些时候后端的web服务器不遵守RFC标准，只接受不经过URL编码的值，这时候就需要用–skip-urlencode参数。</p>
+<h3 id="参数：–eval"><a href="#参数：–eval" class="headerlink" title="参数：–eval"></a>参数：–eval</h3><p>每次请求时候执行自定义的python代码<br>在有些时候，需要根据某个参数的变化，而修改另个一参数，才能形成正常的请求，这时可以用–eval参数在每次请求时根据所写python代码做完修改后请求。<br>例子：<br>Python    sqlmap.py    -u “<a href="http://www.target.com/vuln.php?id=1&amp;hash=c4ca4238a0b923820dcc509a6f75849b&quot;" target="_blank" rel="noopener">http://www.target.com/vuln.php?id=1&amp;hash=c4ca4238a0b923820dcc509a6f75849b&quot;</a> –eval=”import hashlib;hash=hashlib.md5(id).hexdigest()”<br>Python    sqlmap.py    -u “<a href="http://www.target.com/vuln.php?id=1&amp;hash=c4ca4238a0b923820dcc509a6f75849b&quot;" target="_blank" rel="noopener">http://www.target.com/vuln.php?id=1&amp;hash=c4ca4238a0b923820dcc509a6f75849b&quot;</a> –eval=”import hashlib;hash=hashlib.md5(id).hexdigest()”<br>上面的请求就是每次请求时根据id参数值，做一次md5后作为hash参数的值。</p>
+<h3 id="参数：-p-–skip"><a href="#参数：-p-–skip" class="headerlink" title="参数：-p,–skip"></a>参数：-p,–skip</h3><p>测试参数<br>sqlmap默认测试所有的GET和POST参数，当–level的值大于等于2的时候也会测试HTTP Cookie头的值，当大于等于3的时候也会测试User-Agent和HTTP Referer头的值。但是你可以手动用-p参数设置想要测试的参数。例如： -p “id,user-anget”</p>
+<p>当你使用–level的值很大但是有个别参数不想测试的时候可以使用–skip参数。<br>例如：–skip=”user-angent.referer”<br>在有些时候web服务器使用了URL重写，导致无法直接使用sqlmap测试参数，可以在想测试的参数后面加<em><br>例如：<br>python sqlmap.py -u “<a href="http://targeturl/param1/value1" target="_blank" rel="noopener">http://targeturl/param1/value1</a></em>/param2/value2/“<br>python sqlmap.py -u “<a href="http://targeturl/param1/value1*/param2/value2/&quot;" target="_blank" rel="noopener">http://targeturl/param1/value1*/param2/value2/&quot;</a><br>sqlmap将会测试value1的位置是否可注入。</p>
+<h3 id="参数：–dbms"><a href="#参数：–dbms" class="headerlink" title="参数：–dbms"></a>参数：–dbms</h3><p>指定数据库<br>默认情况系sqlmap会自动的探测web应用后端的数据库是什么，sqlmap支持的数据库有：<br>MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access、SQLite、Firebird、Sybase、SAP MaxDB、DB2</p>
+<h3 id="参数：–os"><a href="#参数：–os" class="headerlink" title="参数：–os"></a>参数：–os</h3><p>指定数据库服务器系统<br>默认情况下sqlmap会自动的探测数据库服务器系统，支持的系统有：Linux、Windows。<br>参数：–invalid-bignum<br>指定无效的大数字<br>当你想指定一个报错的数值时，可以使用这个参数，例如默认情况系id=13，sqlmap会变成id=-13来报错，你可以指定比如id=9999999来报错</p>
+<h3 id="参数：–invalid-logical"><a href="#参数：–invalid-logical" class="headerlink" title="参数：–invalid-logical"></a>参数：–invalid-logical</h3><p>只定无效的逻辑<br>原因同上，可以指定id=13把原来的id=-13的报错改成id=13 AND 18=19</p>
+<h3 id="参数：–prefix-–suffix"><a href="#参数：–prefix-–suffix" class="headerlink" title="参数：–prefix,–suffix"></a>参数：–prefix,–suffix</h3><p>注入payload<br>在有些环境中，需要在注入的payload的前面或者后面加一些字符，来保证payload的正常执行。<br>例如，代码中是这样调用数据库的：<br><code>$query = &quot;SELECT * FROM users WHERE id=(’&quot; . $_GET[’id’] . &quot;’) LIMIT 0, 1&quot;;
+$query = &quot;SELECT * FROM users WHERE id=(’&quot; . $_GET[’id’] . &quot;’) LIMIT 0, 1&quot;;</code><br>这时你就需要–prefix和–suffix参数了：<br>Python    sqlmap.py    -u “<a href="http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;" target="_blank" rel="noopener">http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;</a> -p id –prefix “’)” –suffix “AND (’abc’=’abc”<br>Python    sqlmap.py    -u “<a href="http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;" target="_blank" rel="noopener">http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;</a> -p id –prefix “’)” –suffix “AND (’abc’=’abc”<br>这样执行的SQL语句变成：<br>$query = “SELECT <em> FROM users WHERE id=(’1’) &lt;PAYLOAD&gt; AND (’abc’=’abc’) LIMIT 0, 1”;<br>$query = “SELECT </em> FROM users WHERE id=(’1’) &lt;PAYLOAD&gt; AND (’abc’=’abc’) LIMIT 0, 1”;</p>
+<h3 id="参数：–tamper"><a href="#参数：–tamper" class="headerlink" title="参数：–tamper"></a>参数：–tamper</h3><p>修改注入的数据<br>sqlmap除了使用CHAR()函数来防止出现单引号之外没有对注入的数据修改，你可以使用–tamper参数对数据做修改来绕过WAF等设备。<br>例如：<br>python sqlmap.py -u “<a href="http://192.168.136.131/sqlmap/mysql/get_int.php?id=1&quot;" target="_blank" rel="noopener">http://192.168.136.131/sqlmap/mysql/get_int.php?id=1&quot;</a> –tamper tamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v 3</p>
+<h3 id="参数：–level"><a href="#参数：–level" class="headerlink" title="参数：–level"></a>参数：–level</h3><p>探测等级<br>共有五个等级，默认为1，最大为5，sqlmap使用的payload可以在xml/payloads.xml中看到，你也可以根据相应的格式添加自己的payload。<br>这个参数不仅影响使用哪些payload同时也会影响测试的注入点，GET和POST的数据都会测试，HTTP Cookie在level为2的时候就会测试，HTTP User-Agent/Referer头在level为3的时候就会测试。<br>总之在你不确定哪个payload或者参数为注入点的时候，为了保证全面性，建议使用高的level值。</p>
+<h3 id="参数：–risk"><a href="#参数：–risk" class="headerlink" title="参数：–risk"></a>参数：–risk</h3><p>风险等级<br>共有四个风险等级，默认是1会测试大部分的测试语句，2会增加基于事件的测试语句，3会增加OR语句的SQL注入测试。<br>在有些时候，例如在UPDATE的语句中，注入一个OR的测试语句，可能导致更新的整个表，可能造成很大的风险。<br>测试的语句同样可以在xml/payloads.xml中找到，你也可以自行添加payload。</p>
+<h3 id="参数：–string-–not-string-–regexp-–code"><a href="#参数：–string-–not-string-–regexp-–code" class="headerlink" title="参数：–string,–not-string,–regexp,–code"></a>参数：–string,–not-string,–regexp,–code</h3><p>页面比较<br>默认情况下sqlmap通过判断返回页面的不同来判断真假，但有时候这会产生误差，因为有的页面在每次刷新的时候都会返回不同的代码，比如页面当中包含一个动态的广告或者其他内容，这会导致sqlmap的误判。此时用户可以提供一个字符串或者一段正则匹配，在原始页面与真条件下的页面都存在的字符串，而错误页面中不存在（使用–string参数添加字符串，–regexp添加正则），同时用户可以提供一段字符串在原始页面与真条件下的页面都不存在的字符串，而错误页面中存在的字符串（–not-string添加）。用户也可以提供真与假条件返回的HTTP状态码不一样来注入，例如，响应200的时候为真，响应401的时候为假，可以添加参数–code=200。</p>
+<h3 id="参数：–text-only-–titles"><a href="#参数：–text-only-–titles" class="headerlink" title="参数：–text-only,–titles"></a>参数：–text-only,–titles</h3><p>有些时候用户知道真条件下的返回页面与假条件下返回页面是不同位置在哪里可以使用–text-only（HTTP响应体中不同）–titles（HTML的title标签中不同）。<br>注入技术<br>测试是否是注入</p>
+<h3 id="参数：–technique"><a href="#参数：–technique" class="headerlink" title="参数：–technique"></a>参数：–technique</h3><p>这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。<br>支持的探测方式如下：<br>B: Boolean-based blind SQL injection（布尔型注入）<br>E: Error-based SQL injection（报错型注入）<br>U: UNION query SQL injection（可联合查询注入）<br>S: Stacked queries SQL injection（可多语句查询注入）<br>T: Time-based blind SQL injection（基于时间延迟注入）<br>B: Boolean-based blind SQL injection（布尔型注入）<br>E: Error-based SQL injection（报错型注入）<br>U: UNION query SQL injection（可联合查询注入）<br>S: Stacked queries SQL injection（可多语句查询注入）<br>T: Time-based blind SQL injection（基于时间延迟注入）</p>
+<h3 id="参数：–time-sec"><a href="#参数：–time-sec" class="headerlink" title="参数：–time-sec"></a>参数：–time-sec</h3><p>设定延迟注入的时间<br>当使用继续时间的盲注时，时刻使用–time-sec参数设定延时时间，默认是5秒。<br>设定UNION查询字段数</p>
+<h3 id="参数：–union-cols"><a href="#参数：–union-cols" class="headerlink" title="参数：–union-cols"></a>参数：–union-cols</h3><p>默认情况下sqlmap测试UNION查询注入会测试1-10个字段数，当–level为5的时候他会增加测试到50个字段数。设定–union-cols的值应该是一段整数，如：12-16，是测试12-16个字段数。</p>
+<p>设定UNION查询使用的字符</p>
+<h3 id="参数：–union-char"><a href="#参数：–union-char" class="headerlink" title="参数：–union-char"></a>参数：–union-char</h3><p>默认情况下sqlmap针对UNION查询的注入会使用NULL字符，但是有些情况下会造成页面返回失败，而一个随机整数是成功的，这是你可以用–union-char只定UNION查询的字符。</p>
+<p>二阶SQL注入</p>
+<h3 id="参数：–second-order"><a href="#参数：–second-order" class="headerlink" title="参数：–second-order"></a>参数：–second-order</h3><p>有些时候注入点输入的数据看返回结果的时候并不是当前的页面，而是另外的一个页面，这时候就需要你指定到哪个页面获取响应判断真假。–second-order后面跟一个判断页面的URL地址。</p>
+<h3 id="参数：-b-–banner"><a href="#参数：-b-–banner" class="headerlink" title="参数：-b,–banner"></a>参数：-b,–banner</h3><p>大多数的数据库系统都有一个函数可以返回数据库的版本号，通常这个函数是version()或者变量@@version这主要取决与是什么数据库。</p>
+<h3 id="参数：-current-user"><a href="#参数：-current-user" class="headerlink" title="参数：-current-user"></a>参数：-current-user</h3><p>在大多数据库中可以获取到管理数据的用户。</p>
+<h3 id="参数：–current-db"><a href="#参数：–current-db" class="headerlink" title="参数：–current-db"></a>参数：–current-db</h3><p>返还当前连接的数据库。</p>
+<h3 id="参数：–is-dba"><a href="#参数：–is-dba" class="headerlink" title="参数：–is-dba"></a>参数：–is-dba</h3><p>判断当前的用户是否为管理，是的话会返回True。</p>
+<h3 id="参数：–users"><a href="#参数：–users" class="headerlink" title="参数：–users"></a>参数：–users</h3><p>当前用户有权限读取包含所有用户的表的权限时，就可以列出所有管理用户。</p>
+<h3 id="参数：–passwords"><a href="#参数：–passwords" class="headerlink" title="参数：–passwords"></a>参数：–passwords</h3><p>当前用户有权限读取包含用户密码的彪的权限时，sqlmap会现列举出用户，然后列出hash，并尝试破解。<br>例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –passwords -v 1<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –passwords -v 1<br>可以看到sqlmap不仅勒出数据库的用户跟密码，同时也识别出是PostgreSQL数据库，并询问用户是否采用字典爆破的方式进行破解，这个爆破已经支持Oracle和Microsoft SQL Server。<br>也可以提供-U参数来指定爆破哪个用户的hash。</p>
+<h3 id="参数：–privileges"><a href="#参数：–privileges" class="headerlink" title="参数：–privileges"></a>参数：–privileges</h3><p>当前用户有权限读取包含所有用户的表的权限时，很可能列举出每个用户的权限，sqlmap将会告诉你哪个是数据库的超级管理员。也可以用-U参数指定你想看哪个用户的权限。</p>
+<h3 id="参数：–roles"><a href="#参数：–roles" class="headerlink" title="参数：–roles"></a>参数：–roles</h3><p>当前用户有权限读取包含所有用户的表的权限时，很可能列举出每个用户的角色，也可以用-U参数指定你想看哪个用户的角色。<br>仅适用于当前数据库是Oracle的时候。</p>
+<h3 id="参数：–dbs"><a href="#参数：–dbs" class="headerlink" title="参数：–dbs"></a>参数：–dbs</h3><p>当前用户有权限读取包含所有数据库列表信息的表中的时候，即可列出所有的数据库。</p>
+<h3 id="参数：–tables-–exclude-sysdbs-D"><a href="#参数：–tables-–exclude-sysdbs-D" class="headerlink" title="参数：–tables,–exclude-sysdbs,-D"></a>参数：–tables,–exclude-sysdbs,-D</h3><p>当前用户有权限读取包含所有数据库表信息的表中的时候，即可列出一个特定数据的所有表。<br>如果你不提供-D参数来列指定的一个数据的时候，sqlmap会列出数据库所有库的所有表。<br>–exclude-sysdbs参数是指包含了所有的系统数据库。<br>需要注意的是在Oracle中你需要提供的是TABLESPACE_NAME而不是数据库名称。</p>
+<h3 id="参数：–columns-C-T-D"><a href="#参数：–columns-C-T-D" class="headerlink" title="参数：–columns,-C,-T,-D"></a>参数：–columns,-C,-T,-D</h3><p>当前用户有权限读取包含所有数据库表信息的表中的时候，即可列出指定数据库表中的字段，同时也会列出字段的数据类型。<br>如果没有使用-D参数指定数据库时，默认会使用当前数据库。</p>
+<h3 id="参数：–schema-–exclude-sysdbs"><a href="#参数：–schema-–exclude-sysdbs" class="headerlink" title="参数：–schema,–exclude-sysdbs"></a>参数：–schema,–exclude-sysdbs</h3><p>用户可以用此参数获取数据库的架构，包含所有的数据库，表和字段，以及各自的类型。<br>加上–exclude-sysdbs参数，将不会获取数据库自带的系统库内容。</p>
+<h3 id="参数：–count"><a href="#参数：–count" class="headerlink" title="参数：–count"></a>参数：–count</h3><p>有时候用户只想获取表中的数据个数而不是具体的内容，那么就可以使用这个参数。</p>
+<h3 id="参数：–dump-C-T-D-–start-–stop-–first-–last"><a href="#参数：–dump-C-T-D-–start-–stop-–first-–last" class="headerlink" title="参数：–dump,-C,-T,-D,–start,–stop,–first,–last"></a>参数：–dump,-C,-T,-D,–start,–stop,–first,–last</h3><p>如果当前管理员有权限读取数据库其中的一个表的话，那么就能获取真个表的所有内容。<br>使用-D,-T参数指定想要获取哪个库的哪个表，不适用-D参数时，默认使用当前库。<br>可以获取指定库中的所有表的内容，只用-dump跟-D参数（不使用-T与-C参数）。<br>也可以用-dump跟-C获取指定的字段内容。<br>sqlmap为每个表生成了一个CSV文件。<br>如果你只想获取一段数据，可以使用–start和–stop参数，例如，你只想获取第一段数据可hi使用–stop 1，如果想获取第二段与第三段数据，使用参数 –start 1 –stop 3。<br>也可以用–first与–last参数，获取第几个字符到第几个字符的内容，如果你想获取字段中地三个字符到第五个字符的内容，使用–first 3 –last 5，只在盲注的时候使用，因为其他方式可以准确的获取注入内容，不需要一个字符一个字符的猜解。</p>
+<h3 id="参数：–dump-all-–exclude-sysdbs"><a href="#参数：–dump-all-–exclude-sysdbs" class="headerlink" title="参数：–dump-all,–exclude-sysdbs"></a>参数：–dump-all,–exclude-sysdbs</h3><p>使用–dump-all参数获取所有数据库表的内容，可同时加上–exclude-sysdbs只获取用户数据库的表，需要注意在Microsoft SQL Server中master数据库没有考虑成为一个系统数据库，因为有的管理员会把他当初用户数据库一样来使用它。</p>
+<h3 id="参数：–search-C-T-D"><a href="#参数：–search-C-T-D" class="headerlink" title="参数：–search,-C,-T,-D"></a>参数：–search,-C,-T,-D</h3><p>–search可以用来寻找特定的数据库名，所有数据库中的特定表名，所有数据库表中的特定字段。<br>可以在一下三种情况下使用：<br>-C后跟着用逗号分割的列名，将会在所有数据库表中搜索指定的列名。<br>-T后跟着用逗号分割的表名，将会在所有数据库中搜索指定的表名<br>-D后跟着用逗号分割的库名，将会在所有数据库中搜索指定的库名。<br>-C后跟着用逗号分割的列名，将会在所有数据库表中搜索指定的列名。<br>-T后跟着用逗号分割的表名，将会在所有数据库中搜索指定的表名<br>-D后跟着用逗号分割的库名，将会在所有数据库中搜索指定的库名。</p>
+<h3 id="参数：–sql-query-–sql-shell"><a href="#参数：–sql-query-–sql-shell" class="headerlink" title="参数：–sql-query,–sql-shell"></a>参数：–sql-query,–sql-shell</h3><p>sqlmap会自动检测确定使用哪种SQL注入技术，如何插入检索语句。<br>如果是SELECT查询语句，sqlap将会输出结果。如果是通过SQL注入执行其他语句，需要测试是否支持多语句执行SQL语句。<br>列举一个Mircrosoft SQL Server 2000的例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –sql-query “SELECT ‘foo’” -v 1</p>
+<p>爆破<br>暴力破解表名<br>参数：–common-tables<br>当使用–tables无法获取到数据库的表时，可以使用此参数。<br>通常是如下情况：</p>
+<p>1、MySQL数据库版本小于5.0，没有information_schema表。<br>2、数据库是Microssoft Access，系统表MSysObjects是不可读的（默认）。<br>3、当前用户没有权限读取系统中保存数据结构的表的权限。<br>1、MySQL数据库版本小于5.0，没有information_schema表。<br>2、数据库是Microssoft Access，系统表MSysObjects是不可读的（默认）。<br>3、当前用户没有权限读取系统中保存数据结构的表的权限。<br>暴力破解的表在txt/common-tables.txt文件中，你可以自己添加。</p>
+<p>暴力破解列名</p>
+<h3 id="参数：–common-columns"><a href="#参数：–common-columns" class="headerlink" title="参数：–common-columns"></a>参数：–common-columns</h3><p>与暴力破解表名一样，暴力跑的列名在txt/common-columns.txt中。</p>
+<p>用户自定义函数注入</p>
+<h3 id="参数：–udf-inject-–shared-lib"><a href="#参数：–udf-inject-–shared-lib" class="headerlink" title="参数：–udf-inject,–shared-lib"></a>参数：–udf-inject,–shared-lib</h3><p>你可以通过编译MySQL注入你自定义的函数（UDFs）或PostgreSQL在windows中共享库，DLL，或者Linux/Unix中共享对象，sqlmap将会问你一些问题，上传到服务器数据库自定义函数，然后根据你的选择执行他们，当你注入完成后，sqlmap将会移除它们。</p>
+<p>系统文件操作<br>从数据库服务器中读取文件<br>参数：–file-read<br>当数据库为MySQL，PostgreSQL或Microsoft SQL Server，并且当前用户有权限使用特定的函数。读取的文件可以是文本也可以是二进制文件。<br>$python    sqlmap.py    -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –file-read “C:/example.exe” -v 1</p>
+<p>把文件上传到数据库服务器中</p>
+<h3 id="参数：–file-write-–file-dest"><a href="#参数：–file-write-–file-dest" class="headerlink" title="参数：–file-write,–file-dest"></a>参数：–file-write,–file-dest</h3><p>当数据库为MySQL，PostgreSQL或Microsoft SQL Server，并且当前用户有权限使用特定的函数。上传的文件可以是文本也可以是二进制文件。<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –file-write “/software/nc.exe.packed” –file-dest “C:/WINDOWS/Temp/nc.exe” -v 1</p>
+<p>运行任意操作系统命令</p>
+<h3 id="参数：–os-cmd-–os-shell"><a href="#参数：–os-cmd-–os-shell" class="headerlink" title="参数：–os-cmd,–os-shell"></a>参数：–os-cmd,–os-shell</h3><p>当数据库为MySQL，PostgreSQL或Microsoft SQL Server，并且当前用户有权限使用特定的函数。<br>在MySQL、PostgreSQL，sqlmap上传一个二进制库，包含用户自定义的函数，sys_exec()和sys_eval()。<br>那么他创建的这两个函数可以执行系统命令。在Microsoft SQL Server，sqlmap将会使用xp_cmdshell存储过程，如果被禁（在Microsoft SQL Server 2005及以上版本默认禁制），sqlmap会重新启用它，如果不存在，会自动创建。<br>列举一个PostgreSQL的例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –os-cmd id -v 1<br>用–os-shell参数也可以模拟一个真实的shell，可以输入你想执行的命令。<br>当不能执行多语句的时候（比如php或者asp的后端数据库为MySQL时），仍然可能使用INTO OUTFILE写进可写目录，来创建一个web后门。支持的语言：<br>1、ASP<br>2、ASP.NET<br>3、JSP<br>4、PHP</p>
+<p>Meterpreter配合使用</p>
+<h3 id="参数：–os-pwn-–os-smbrelay-–os-bof-–priv-esc-–msf-path-–tmp-path"><a href="#参数：–os-pwn-–os-smbrelay-–os-bof-–priv-esc-–msf-path-–tmp-path" class="headerlink" title="参数：–os-pwn,–os-smbrelay,–os-bof,–priv-esc,–msf-path,–tmp-path"></a>参数：–os-pwn,–os-smbrelay,–os-bof,–priv-esc,–msf-path,–tmp-path</h3><p>当数据库为MySQL，PostgreSQL或Microsoft SQL Server，并且当前用户有权限使用特定的函数，可以在数据库与攻击者直接建立TCP连接，这个连接可以是一个交互式命令行的Meterpreter会话，sqlmap根据Metasploit生成shellcode，并有四种方式执行它：<br>1、通过用户自定义的sys_bineval()函数在内存中执行Metasplit的shellcode，支持MySQL和PostgreSQL数据库，参数：–os-pwn。<br>2、通过用户自定义的函数上传一个独立的payload执行，MySQL和PostgreSQL的sys_exec()函数，Microsoft SQL Server的xp_cmdshell()函数，参数：–os-pwn。<br>3、通过SMB攻击(MS08-068)来执行Metasploit的shellcode，当sqlmap获取到的权限足够高的时候（Linux/Unix的uid=0，Windows是Administrator），–os-smbrelay。<br>4、通过溢出Microsoft SQL Server 2000和2005的sp_replwritetovarbin存储过程(MS09-004)，在内存中执行Metasploit的payload，参数：–os-bof<br>1、通过用户自定义的sys_bineval()函数在内存中执行Metasplit的shellcode，支持MySQL和PostgreSQL数据库，参数：–os-pwn。<br>2、通过用户自定义的函数上传一个独立的payload执行，MySQL和PostgreSQL的sys_exec()函数，Microsoft SQL Server的xp_cmdshell()函数，参数：–os-pwn。<br>3、通过SMB攻击(MS08-068)来执行Metasploit的shellcode，当sqlmap获取到的权限足够高的时候（Linux/Unix的uid=0，Windows是Administrator），–os-smbrelay。<br>4、通过溢出Microsoft SQL Server 2000和2005的sp_replwritetovarbin存储过程(MS09-004)，在内存中执行Metasploit的payload，参数：–os-bof<br>列举一个MySQL例子：</p>
+<p>$python    sqlmap.py    -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –os-pwn –msf-path /software/metasploit</p>
+<p>默认情况下MySQL在Windows上以SYSTEM权限运行，PostgreSQL在Windows与Linux中是低权限运行，Microsoft SQL Server 2000默认是以SYSTEM权限运行，Microsoft SQL Server 2005与2008大部分是以NETWORK SERVICE有时是LOCAL SERVICE。</p>
+<p>对Windows注册表操作<br>当数据库为MySQL，PostgreSQL或Microsoft SQL Server，并且当前web应用支持堆查询。 当然，当前连接数据库的用户也需要有权限操作注册表。</p>
+<h3 id="参数：–reg-read"><a href="#参数：–reg-read" class="headerlink" title="参数：–reg-read"></a>参数：–reg-read</h3><p>读取注册表值</p>
+<h3 id="参数：–reg-add"><a href="#参数：–reg-add" class="headerlink" title="参数：–reg-add"></a>参数：–reg-add</h3><p>写入注册表值</p>
+<h3 id="参数：–reg-del"><a href="#参数：–reg-del" class="headerlink" title="参数：–reg-del"></a>参数：–reg-del</h3><p>删除注册表值</p>
+<h3 id="参数：–reg-key，–reg-value，–reg-data，–reg-type"><a href="#参数：–reg-key，–reg-value，–reg-data，–reg-type" class="headerlink" title="参数：–reg-key，–reg-value，–reg-data，–reg-type"></a>参数：–reg-key，–reg-value，–reg-data，–reg-type</h3><p>需要配合之前三个参数使用，例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –reg-add –reg-key=”HKEY_LOCAL_MACHINE\SOFTWARE\sqlmap” –reg-value=Test –reg-type=REG_SZ –reg-data=1</p>
+<p>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –reg-add –reg-key=”HKEY_LOCAL_MACHINE\SOFTWARE\sqlmap” –reg-value=Test –reg-type=REG_SZ –reg-data=1</p>
+<h3 id="参数：-s"><a href="#参数：-s" class="headerlink" title="参数：-s"></a>参数：-s</h3><p>从sqlite中读取session<br>sqlmap对每一个目标都会在output路径下自动生成一个SQLite文件，如果用户想指定读取的文件路径，就可以用这个参数。</p>
+<h3 id="参数：-t"><a href="#参数：-t" class="headerlink" title="参数：-t"></a>参数：-t</h3><p>保存HTTP(S)日志<br>这个参数需要跟一个文本文件，sqlmap会把HTTP(S)请求与响应的日志保存到那里。</p>
+<h3 id="参数：–batch"><a href="#参数：–batch" class="headerlink" title="参数：–batch"></a>参数：–batch</h3><p>非交互模式<br>用此参数，不需要用户输入，将会使用sqlmap提示的默认值一直运行下去。</p>
+<h3 id="参数：–charset"><a href="#参数：–charset" class="headerlink" title="参数：–charset"></a>参数：–charset</h3><p>强制使用字符编码<br>不使用sqlmap自动识别的（如HTTP头中的Content-Type）字符编码，强制指定字符编码如：<br>–charset=GBK<br>–charset=GBK</p>
+<h3 id="参数：–crawl"><a href="#参数：–crawl" class="headerlink" title="参数：–crawl"></a>参数：–crawl</h3><p>爬行网站URL<br>sqlmap可以收集潜在的可能存在漏洞的连接，后面跟的参数是爬行的深度。<br>例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –batch –crawl=3</p>
+<h3 id="参数：–csv-del"><a href="#参数：–csv-del" class="headerlink" title="参数：–csv-del"></a>参数：–csv-del</h3><p>规定输出到CSV中的分隔符<br>当dump保存为CSV格式时（–dump-format=CSV），需要一个分隔符默认是逗号，用户也可以改为别的 如：<br>–csv-del=”;”</p>
+<h3 id="参数：–dbms-cred"><a href="#参数：–dbms-cred" class="headerlink" title="参数：–dbms-cred"></a>参数：–dbms-cred</h3><p>DBMS身份验证<br>某些时候当前用户的权限不够，做某些操作会失败，如果知道高权限用户的密码，可以使用此参数，有的数据库有专门的运行机制，可以切换用户如Microsoft SQL Server的OPENROWSET函数</p>
+<h3 id="参数：–dump-format"><a href="#参数：–dump-format" class="headerlink" title="参数：–dump-format"></a>参数：–dump-format</h3><p>定义dump数据的格式<br>输出的格式可定义为：CSV，HTML，SQLITE</p>
+<h3 id="参数：–eta"><a href="#参数：–eta" class="headerlink" title="参数：–eta"></a>参数：–eta</h3><p>预估完成时间<br>可以计算注入数据的剩余时间。<br>例如Oracle的布尔型盲注：<br>$python    sqlmap.py    -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> -b –eta</p>
+<p>刷新session文件</p>
+<h3 id="参数：–flush-session"><a href="#参数：–flush-session" class="headerlink" title="参数：–flush-session"></a>参数：–flush-session</h3><p>如果不想用之前缓存这个目标的session文件，可以使用这个参数。 会清空之前的session，重新测试该目标。</p>
+<h3 id="参数：–forms"><a href="#参数：–forms" class="headerlink" title="参数：–forms"></a>参数：–forms</h3><p>自动获取form表单测试<br>如果你想对一个页面的form表单中的参数测试，可以使用-r参数读取请求文件，或者通过–data参数测试。 但是当使用–forms参数时，sqlmap会自动从-u中的url获取页面中的表单进行测试。</p>
+<h3 id="参数：–fresh-queries"><a href="#参数：–fresh-queries" class="headerlink" title="参数：–fresh-queries"></a>参数：–fresh-queries</h3><p>忽略在会话文件中存储的查询结果<br>忽略session文件保存的查询，重新查询</p>
+<h3 id="参数：–hex"><a href="#参数：–hex" class="headerlink" title="参数：–hex"></a>参数：–hex</h3><p>使用DBMS的hex函数<br>有时候字符编码的问题，可能导致数据丢失，可以使用hex函数来避免：<br>针对PostgreSQL例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –banner –hex -v 3 –parse-errors</p>
+<h3 id="参数：–output-dir"><a href="#参数：–output-dir" class="headerlink" title="参数：–output-dir"></a>参数：–output-dir</h3><p>自定义输出的路径<br>sqlmap默认把session文件跟结果文件保存在output文件夹下，用此参数可自定义输出路径 例如：–output-dir=/tmp</p>
+<h3 id="参数：–parse-errors"><a href="#参数：–parse-errors" class="headerlink" title="参数：–parse-errors"></a>参数：–parse-errors</h3><p>从响应中获取DBMS的错误信息<br>有时目标没有关闭DBMS的报错，当数据库语句错误时，会输出错误语句，用词参数可以会显出错误信息。<br>$python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –parse-errors</p>
+<h3 id="参数：-z"><a href="#参数：-z" class="headerlink" title="参数：-z"></a>参数：-z</h3><p>使用参数缩写<br>有使用参数太长太复杂，可以使用缩写模式。 例如：<br>python sqlmap.py –batch –random-agent –ignore-proxy –technique=BEU -u “<a href="http://www.target.com/vuln.php?id=1&quot;" target="_blank" rel="noopener">www.target.com/vuln.php?id=1&quot;</a><br>python sqlmap.py –batch –random-agent –ignore-proxy –technique=BEU -u “<a href="http://www.target.com/vuln.php?id=1&quot;" target="_blank" rel="noopener">www.target.com/vuln.php?id=1&quot;</a><br>可以写成：<br>python sqlmap.py -z “bat,randoma,ign,tec=BEU” -u “<a href="http://www.target.com/vuln.php?id=1&quot;" target="_blank" rel="noopener">www.target.com/vuln.php?id=1&quot;</a><br>python sqlmap.py -z “bat,randoma,ign,tec=BEU” -u “<a href="http://www.target.com/vuln.php?id=1&quot;" target="_blank" rel="noopener">www.target.com/vuln.php?id=1&quot;</a></p>
+<p>还有：<br>python sqlmap.py –ignore-proxy –flush-session –technique=U –dump -D testdb -T users -u “<a href="http://www.target.com/vuln.php?id=1&quot;" target="_blank" rel="noopener">www.target.com/vuln.php?id=1&quot;</a><br>1<br>python sqlmap.py –ignore-proxy –flush-session –technique=U –dump -D testdb -T users -u “<a href="http://www.target.com/vuln.php?id=1&quot;" target="_blank" rel="noopener">www.target.com/vuln.php?id=1&quot;</a><br>可以写成：<br>python sqlmap.py -z “ign,flu,bat,tec=U,dump,D=testdb,T=users” -u “<a href="http://www.target.com/vuln.php?id=1&quot;" target="_blank" rel="noopener">www.target.com/vuln.php?id=1&quot;</a><br>1<br>python sqlmap.py -z “ign,flu,bat,tec=U,dump,D=testdb,T=users” -u <a href="http://www.target.com/vuln.php?id=1" target="_blank" rel="noopener">www.target.com/vuln.php?id=1</a></p>
+<h3 id="参数：–alert"><a href="#参数：–alert" class="headerlink" title="参数：–alert"></a>参数：–alert</h3><p>成功SQL注入时警告</p>
+<p>设定会发的答案</p>
+<h3 id="参数：–answers"><a href="#参数：–answers" class="headerlink" title="参数：–answers"></a>参数：–answers</h3><p>当希望sqlmap提出输入时，自动输入自己想要的答案可以使用此参数： 例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –answers=”extending=N”</p>
+<h3 id="参数：–beep"><a href="#参数：–beep" class="headerlink" title="参数：–beep"></a>参数：–beep</h3><p>发现sql注入时，发出蜂鸣声。</p>
+<p>启发式检测WAF/IPS/IDS保护</p>
+<h3 id="参数：–check-waf"><a href="#参数：–check-waf" class="headerlink" title="参数：–check-waf"></a>参数：–check-waf</h3><p>WAF/IPS/IDS保护可能会对sqlmap造成很大的困扰，如果怀疑目标有此防护的话，可以使用此参数来测试。 sqlmap将会使用一个不存在的参数来注入测试</p>
+<h3 id="参数：–cleanup"><a href="#参数：–cleanup" class="headerlink" title="参数：–cleanup"></a>参数：–cleanup</h3><p>清理sqlmap的UDF(s)和表<br>清除sqlmap注入时产生的udf与表。</p>
+<h3 id="参数：–disable-coloring"><a href="#参数：–disable-coloring" class="headerlink" title="参数：–disable-coloring"></a>参数：–disable-coloring</h3><p>禁用彩色输出<br>sqlmap默认彩色输出，可以使用此参数，禁掉彩色输出。</p>
+<h3 id="参数：–gpage"><a href="#参数：–gpage" class="headerlink" title="参数：–gpage"></a>参数：–gpage</h3><p>使用指定的Google结果页面<br>默认sqlmap使用前100个URL地址作为注入测试，结合此选项，可以指定页面的URL测试。</p>
+<h3 id="参数：-hpp"><a href="#参数：-hpp" class="headerlink" title="参数：-hpp"></a>参数：-hpp</h3><p>使用HTTP参数污染<br>HTTP参数污染可能会绕过WAF/IPS/IDS保护机制，这个对ASP/IIS与ASP.NET/IIS平台很有效。</p>
+<h3 id="参数：–identify-waf"><a href="#参数：–identify-waf" class="headerlink" title="参数：–identify-waf"></a>参数：–identify-waf</h3><p>测试WAF/IPS/IDS保护<br>sqlmap可以尝试找出WAF/IPS/IDS保护，方便用户做出绕过方式。目前大约支持30种产品的识别。<br>例如对一个受到ModSecurity WAF保护的MySQL例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –identify-waf -v 3</p>
+<h3 id="参数：–mobile"><a href="#参数：–mobile" class="headerlink" title="参数：–mobile"></a>参数：–mobile</h3><p>模仿智能手机<br>有时服务端只接收移动端的访问，此时可以设定一个手机的User-Agent来模仿手机登陆。<br>例如：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –mobile</p>
+<h3 id="参数：–purge-output"><a href="#参数：–purge-output" class="headerlink" title="参数：–purge-output"></a>参数：–purge-output</h3><p>安全的删除output目录的文件<br>有时需要删除结果文件，而不被恢复，可以使用此参数，原有文件将会被随机的一些文件覆盖。<br>例如：<br>$ python sqlmap.py –purge-output -v 3</p>
+<h3 id="参数：–smart"><a href="#参数：–smart" class="headerlink" title="参数：–smart"></a>参数：–smart</h3><p>启发式判断注入<br>有时对目标非常多的URL进行测试，为节省时间，只对能够快速判断为注入的报错点进行注入，可以使用此参数<br>例子：<br>$ python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php&quot;</a> –batch –smart</p>
+<h3 id="参数：–wizard"><a href="#参数：–wizard" class="headerlink" title="参数：–wizard"></a>参数：–wizard</h3><p>面向初级用户的参数，可以一步一步教你如何输入针对目标注入。<br>$ python sqlmap.py –wizard</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>谢谢支持</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏</div>
+            <div class="shang_payselect">
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
+        <p><span>发布时间:</span>2018年04月15日 - 14时31分</p>
+        <p><span>最后更新:</span>2018年05月06日 - 15时00分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/04/15/Sqlmap详细总结/" title="Sqlmap详细总结">http://deelmind.github.com/2018/04/15/Sqlmap详细总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/04/15/Sqlmap详细总结/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/29/缺少头文件unistd-h/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">缺少头文件unistd.h</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Sqlmap"><span class="toc-number">1.</span> <span class="toc-text">什么是Sqlmap</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下载地址"><span class="toc-number">2.</span> <span class="toc-text">下载地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlmap支持的数据库有："><span class="toc-number">3.</span> <span class="toc-text">sqlmap支持的数据库有：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#命令"><span class="toc-number">4.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-v"><span class="toc-number">4.0.1.</span> <span class="toc-text">参数：-v</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-u或者–url"><span class="toc-number">4.0.2.</span> <span class="toc-text">参数：-u或者–url</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-l"><span class="toc-number">4.0.3.</span> <span class="toc-text">参数：-l</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-m"><span class="toc-number">4.0.4.</span> <span class="toc-text">参数：-m</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-r"><span class="toc-number">4.0.5.</span> <span class="toc-text">参数：-r</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-g"><span class="toc-number">4.0.6.</span> <span class="toc-text">参数：-g</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–data"><span class="toc-number">4.0.7.</span> <span class="toc-text">参数：–data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–param-del"><span class="toc-number">4.0.8.</span> <span class="toc-text">参数：–param-del</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–cookie-–load-cookies-–drop-set-cookie"><span class="toc-number">4.0.9.</span> <span class="toc-text">参数：–cookie,–load-cookies,–drop-set-cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–user-agent-–random-agent"><span class="toc-number">4.0.10.</span> <span class="toc-text">参数：–user-agent,–random-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–referer"><span class="toc-number">4.0.11.</span> <span class="toc-text">参数：–referer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–headers"><span class="toc-number">4.0.12.</span> <span class="toc-text">参数：–headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–auth-type-–auth-cred"><span class="toc-number">4.0.13.</span> <span class="toc-text">参数：–auth-type,–auth-cred</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–auth-cert"><span class="toc-number">4.0.14.</span> <span class="toc-text">参数：–auth-cert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–delay"><span class="toc-number">4.0.15.</span> <span class="toc-text">参数：–delay</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–timeout"><span class="toc-number">4.0.16.</span> <span class="toc-text">参数：–timeout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–retries"><span class="toc-number">4.0.17.</span> <span class="toc-text">参数：–retries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–randomize"><span class="toc-number">4.0.18.</span> <span class="toc-text">参数：–randomize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–scope"><span class="toc-number">4.0.19.</span> <span class="toc-text">参数：–scope</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–safe-url-–safe-freq"><span class="toc-number">4.0.20.</span> <span class="toc-text">参数：–safe-url,–safe-freq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–skip-urlencode"><span class="toc-number">4.0.21.</span> <span class="toc-text">参数：–skip-urlencode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–eval"><span class="toc-number">4.0.22.</span> <span class="toc-text">参数：–eval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-p-–skip"><span class="toc-number">4.0.23.</span> <span class="toc-text">参数：-p,–skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–dbms"><span class="toc-number">4.0.24.</span> <span class="toc-text">参数：–dbms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–os"><span class="toc-number">4.0.25.</span> <span class="toc-text">参数：–os</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–invalid-logical"><span class="toc-number">4.0.26.</span> <span class="toc-text">参数：–invalid-logical</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–prefix-–suffix"><span class="toc-number">4.0.27.</span> <span class="toc-text">参数：–prefix,–suffix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–tamper"><span class="toc-number">4.0.28.</span> <span class="toc-text">参数：–tamper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–level"><span class="toc-number">4.0.29.</span> <span class="toc-text">参数：–level</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–risk"><span class="toc-number">4.0.30.</span> <span class="toc-text">参数：–risk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–string-–not-string-–regexp-–code"><span class="toc-number">4.0.31.</span> <span class="toc-text">参数：–string,–not-string,–regexp,–code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–text-only-–titles"><span class="toc-number">4.0.32.</span> <span class="toc-text">参数：–text-only,–titles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–technique"><span class="toc-number">4.0.33.</span> <span class="toc-text">参数：–technique</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–time-sec"><span class="toc-number">4.0.34.</span> <span class="toc-text">参数：–time-sec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–union-cols"><span class="toc-number">4.0.35.</span> <span class="toc-text">参数：–union-cols</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–union-char"><span class="toc-number">4.0.36.</span> <span class="toc-text">参数：–union-char</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–second-order"><span class="toc-number">4.0.37.</span> <span class="toc-text">参数：–second-order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-b-–banner"><span class="toc-number">4.0.38.</span> <span class="toc-text">参数：-b,–banner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-current-user"><span class="toc-number">4.0.39.</span> <span class="toc-text">参数：-current-user</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–current-db"><span class="toc-number">4.0.40.</span> <span class="toc-text">参数：–current-db</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–is-dba"><span class="toc-number">4.0.41.</span> <span class="toc-text">参数：–is-dba</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–users"><span class="toc-number">4.0.42.</span> <span class="toc-text">参数：–users</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–passwords"><span class="toc-number">4.0.43.</span> <span class="toc-text">参数：–passwords</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–privileges"><span class="toc-number">4.0.44.</span> <span class="toc-text">参数：–privileges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–roles"><span class="toc-number">4.0.45.</span> <span class="toc-text">参数：–roles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–dbs"><span class="toc-number">4.0.46.</span> <span class="toc-text">参数：–dbs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–tables-–exclude-sysdbs-D"><span class="toc-number">4.0.47.</span> <span class="toc-text">参数：–tables,–exclude-sysdbs,-D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–columns-C-T-D"><span class="toc-number">4.0.48.</span> <span class="toc-text">参数：–columns,-C,-T,-D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–schema-–exclude-sysdbs"><span class="toc-number">4.0.49.</span> <span class="toc-text">参数：–schema,–exclude-sysdbs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–count"><span class="toc-number">4.0.50.</span> <span class="toc-text">参数：–count</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–dump-C-T-D-–start-–stop-–first-–last"><span class="toc-number">4.0.51.</span> <span class="toc-text">参数：–dump,-C,-T,-D,–start,–stop,–first,–last</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–dump-all-–exclude-sysdbs"><span class="toc-number">4.0.52.</span> <span class="toc-text">参数：–dump-all,–exclude-sysdbs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–search-C-T-D"><span class="toc-number">4.0.53.</span> <span class="toc-text">参数：–search,-C,-T,-D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–sql-query-–sql-shell"><span class="toc-number">4.0.54.</span> <span class="toc-text">参数：–sql-query,–sql-shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–common-columns"><span class="toc-number">4.0.55.</span> <span class="toc-text">参数：–common-columns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–udf-inject-–shared-lib"><span class="toc-number">4.0.56.</span> <span class="toc-text">参数：–udf-inject,–shared-lib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–file-write-–file-dest"><span class="toc-number">4.0.57.</span> <span class="toc-text">参数：–file-write,–file-dest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–os-cmd-–os-shell"><span class="toc-number">4.0.58.</span> <span class="toc-text">参数：–os-cmd,–os-shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–os-pwn-–os-smbrelay-–os-bof-–priv-esc-–msf-path-–tmp-path"><span class="toc-number">4.0.59.</span> <span class="toc-text">参数：–os-pwn,–os-smbrelay,–os-bof,–priv-esc,–msf-path,–tmp-path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–reg-read"><span class="toc-number">4.0.60.</span> <span class="toc-text">参数：–reg-read</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–reg-add"><span class="toc-number">4.0.61.</span> <span class="toc-text">参数：–reg-add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–reg-del"><span class="toc-number">4.0.62.</span> <span class="toc-text">参数：–reg-del</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–reg-key，–reg-value，–reg-data，–reg-type"><span class="toc-number">4.0.63.</span> <span class="toc-text">参数：–reg-key，–reg-value，–reg-data，–reg-type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-s"><span class="toc-number">4.0.64.</span> <span class="toc-text">参数：-s</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-t"><span class="toc-number">4.0.65.</span> <span class="toc-text">参数：-t</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–batch"><span class="toc-number">4.0.66.</span> <span class="toc-text">参数：–batch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–charset"><span class="toc-number">4.0.67.</span> <span class="toc-text">参数：–charset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–crawl"><span class="toc-number">4.0.68.</span> <span class="toc-text">参数：–crawl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–csv-del"><span class="toc-number">4.0.69.</span> <span class="toc-text">参数：–csv-del</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–dbms-cred"><span class="toc-number">4.0.70.</span> <span class="toc-text">参数：–dbms-cred</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–dump-format"><span class="toc-number">4.0.71.</span> <span class="toc-text">参数：–dump-format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–eta"><span class="toc-number">4.0.72.</span> <span class="toc-text">参数：–eta</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–flush-session"><span class="toc-number">4.0.73.</span> <span class="toc-text">参数：–flush-session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–forms"><span class="toc-number">4.0.74.</span> <span class="toc-text">参数：–forms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–fresh-queries"><span class="toc-number">4.0.75.</span> <span class="toc-text">参数：–fresh-queries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–hex"><span class="toc-number">4.0.76.</span> <span class="toc-text">参数：–hex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–output-dir"><span class="toc-number">4.0.77.</span> <span class="toc-text">参数：–output-dir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–parse-errors"><span class="toc-number">4.0.78.</span> <span class="toc-text">参数：–parse-errors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-z"><span class="toc-number">4.0.79.</span> <span class="toc-text">参数：-z</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–alert"><span class="toc-number">4.0.80.</span> <span class="toc-text">参数：–alert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–answers"><span class="toc-number">4.0.81.</span> <span class="toc-text">参数：–answers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–beep"><span class="toc-number">4.0.82.</span> <span class="toc-text">参数：–beep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–check-waf"><span class="toc-number">4.0.83.</span> <span class="toc-text">参数：–check-waf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–cleanup"><span class="toc-number">4.0.84.</span> <span class="toc-text">参数：–cleanup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–disable-coloring"><span class="toc-number">4.0.85.</span> <span class="toc-text">参数：–disable-coloring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–gpage"><span class="toc-number">4.0.86.</span> <span class="toc-text">参数：–gpage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：-hpp"><span class="toc-number">4.0.87.</span> <span class="toc-text">参数：-hpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–identify-waf"><span class="toc-number">4.0.88.</span> <span class="toc-text">参数：–identify-waf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–mobile"><span class="toc-number">4.0.89.</span> <span class="toc-text">参数：–mobile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–purge-output"><span class="toc-number">4.0.90.</span> <span class="toc-text">参数：–purge-output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–smart"><span class="toc-number">4.0.91.</span> <span class="toc-text">参数：–smart</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数：–wizard"><span class="toc-number">4.0.92.</span> <span class="toc-text">参数：–wizard</span></a></li></ol></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/03/29/缺少头文件unistd-h/" title="下一篇: 缺少头文件unistd.h">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/缺少头文件unistd-h/">缺少头文件unistd.h</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/Hexo莫名其妙错误/">Hexo莫名其妙错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown语法/">MarkDown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown数学符号/">MarkDown数学符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/机器学习-SVM/">机器学习-SVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/GitHub单独下载文件夹/">GitHub单独下载文件夹</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 DeeLMind
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >累计访问量: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
