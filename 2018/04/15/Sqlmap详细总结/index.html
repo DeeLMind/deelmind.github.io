@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="DeeLMind-Blog">
 <meta property="og:description" content="简介:Sqlmap命令行帮助总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T07:00:42.892Z">
+<meta property="og:updated_time" content="2018-05-08T11:16:41.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqlmap详细总结">
 <meta name="twitter:description" content="简介:Sqlmap命令行帮助总结">
@@ -355,8 +355,8 @@
 <h3 id="参数：–os"><a href="#参数：–os" class="headerlink" title="参数：–os"></a>参数：–os</h3><p>指定数据库服务器系统<br>默认情况下sqlmap会自动的探测数据库服务器系统，支持的系统有：Linux、Windows。<br>参数：–invalid-bignum<br>指定无效的大数字<br>当你想指定一个报错的数值时，可以使用这个参数，例如默认情况系id=13，sqlmap会变成id=-13来报错，你可以指定比如id=9999999来报错</p>
 <h3 id="参数：–invalid-logical"><a href="#参数：–invalid-logical" class="headerlink" title="参数：–invalid-logical"></a>参数：–invalid-logical</h3><p>只定无效的逻辑<br>原因同上，可以指定id=13把原来的id=-13的报错改成id=13 AND 18=19</p>
 <h3 id="参数：–prefix-–suffix"><a href="#参数：–prefix-–suffix" class="headerlink" title="参数：–prefix,–suffix"></a>参数：–prefix,–suffix</h3><p>注入payload<br>在有些环境中，需要在注入的payload的前面或者后面加一些字符，来保证payload的正常执行。<br>例如，代码中是这样调用数据库的：<br><code>$query = &quot;SELECT * FROM users WHERE id=(’&quot; . $_GET[’id’] . &quot;’) LIMIT 0, 1&quot;;
-$query = &quot;SELECT * FROM users WHERE id=(’&quot; . $_GET[’id’] . &quot;’) LIMIT 0, 1&quot;;</code><br>这时你就需要–prefix和–suffix参数了：<br>Python    sqlmap.py    -u “<a href="http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;" target="_blank" rel="noopener">http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;</a> -p id –prefix “’)” –suffix “AND (’abc’=’abc”<br>Python    sqlmap.py    -u “<a href="http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;" target="_blank" rel="noopener">http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;</a> -p id –prefix “’)” –suffix “AND (’abc’=’abc”<br>这样执行的SQL语句变成：<br>$query = “SELECT <em> FROM users WHERE id=(’1’) &lt;PAYLOAD&gt; AND (’abc’=’abc’) LIMIT 0, 1”;<br>$query = “SELECT </em> FROM users WHERE id=(’1’) &lt;PAYLOAD&gt; AND (’abc’=’abc’) LIMIT 0, 1”;</p>
-<h3 id="参数：–tamper"><a href="#参数：–tamper" class="headerlink" title="参数：–tamper"></a>参数：–tamper</h3><p>修改注入的数据<br>sqlmap除了使用CHAR()函数来防止出现单引号之外没有对注入的数据修改，你可以使用–tamper参数对数据做修改来绕过WAF等设备。<br>例如：<br>python sqlmap.py -u “<a href="http://192.168.136.131/sqlmap/mysql/get_int.php?id=1&quot;" target="_blank" rel="noopener">http://192.168.136.131/sqlmap/mysql/get_int.php?id=1&quot;</a> –tamper tamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v 3</p>
+$query = &quot;SELECT * FROM users WHERE id=(’&quot; . $_GET[’id’] . &quot;’) LIMIT 0, 1&quot;;</code><br>这时你就需要–prefix和–suffix参数了：<br>Python    sqlmap.py    -u “<a href="http://deelmind.cn/deelmind.php?id=1&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php?id=1&quot;</a> -p id –prefix “’)” –suffix “AND (’abc’=’abc”<br>Python    sqlmap.py    -u “<a href="http://deelmind.cn/deelmind.php?id=1&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php?id=1&quot;</a> -p id –prefix “’)” –suffix “AND (’abc’=’abc”<br>这样执行的SQL语句变成：<br>$query = “SELECT <em> FROM users WHERE id=(’1’) &lt;PAYLOAD&gt; AND (’abc’=’abc’) LIMIT 0, 1”;<br>$query = “SELECT </em> FROM users WHERE id=(’1’) &lt;PAYLOAD&gt; AND (’abc’=’abc’) LIMIT 0, 1”;</p>
+<h3 id="参数：–tamper"><a href="#参数：–tamper" class="headerlink" title="参数：–tamper"></a>参数：–tamper</h3><p>修改注入的数据<br>sqlmap除了使用CHAR()函数来防止出现单引号之外没有对注入的数据修改，你可以使用–tamper参数对数据做修改来绕过WAF等设备。<br>例如：<br>python sqlmap.py -u “<a href="http://deelmind.cn/deelmind.php?id=1&quot;" target="_blank" rel="noopener">http://deelmind.cn/deelmind.php?id=1&quot;</a> –tamper tamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v 3</p>
 <h3 id="参数：–level"><a href="#参数：–level" class="headerlink" title="参数：–level"></a>参数：–level</h3><p>探测等级<br>共有五个等级，默认为1，最大为5，sqlmap使用的payload可以在xml/payloads.xml中看到，你也可以根据相应的格式添加自己的payload。<br>这个参数不仅影响使用哪些payload同时也会影响测试的注入点，GET和POST的数据都会测试，HTTP Cookie在level为2的时候就会测试，HTTP User-Agent/Referer头在level为3的时候就会测试。<br>总之在你不确定哪个payload或者参数为注入点的时候，为了保证全面性，建议使用高的level值。</p>
 <h3 id="参数：–risk"><a href="#参数：–risk" class="headerlink" title="参数：–risk"></a>参数：–risk</h3><p>风险等级<br>共有四个风险等级，默认是1会测试大部分的测试语句，2会增加基于事件的测试语句，3会增加OR语句的SQL注入测试。<br>在有些时候，例如在UPDATE的语句中，注入一个OR的测试语句，可能导致更新的整个表，可能造成很大的风险。<br>测试的语句同样可以在xml/payloads.xml中找到，你也可以自行添加payload。</p>
 <h3 id="参数：–string-–not-string-–regexp-–code"><a href="#参数：–string-–not-string-–regexp-–code" class="headerlink" title="参数：–string,–not-string,–regexp,–code"></a>参数：–string,–not-string,–regexp,–code</h3><p>页面比较<br>默认情况下sqlmap通过判断返回页面的不同来判断真假，但有时候这会产生误差，因为有的页面在每次刷新的时候都会返回不同的代码，比如页面当中包含一个动态的广告或者其他内容，这会导致sqlmap的误判。此时用户可以提供一个字符串或者一段正则匹配，在原始页面与真条件下的页面都存在的字符串，而错误页面中不存在（使用–string参数添加字符串，–regexp添加正则），同时用户可以提供一段字符串在原始页面与真条件下的页面都不存在的字符串，而错误页面中存在的字符串（–not-string添加）。用户也可以提供真与假条件返回的HTTP状态码不一样来注入，例如，响应200的时候为真，响应401的时候为假，可以添加参数–code=200。</p>
@@ -492,7 +492,7 @@ $query = &quot;SELECT * FROM users WHERE id=(’&quot; . $_GET[’id’] . &quot
         <p><span>本文标题:</span><a href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
         <p><span>发布时间:</span>2018年04月15日 - 14时31分</p>
-        <p><span>最后更新:</span>2018年05月06日 - 15时00分</p>
+        <p><span>最后更新:</span>2018年05月08日 - 19时16分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/04/15/Sqlmap详细总结/" title="Sqlmap详细总结">http://deelmind.github.com/2018/04/15/Sqlmap详细总结/</a>
             <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/04/15/Sqlmap详细总结/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
