@@ -231,7 +231,7 @@ a {
   background-color: rgba(0,0,0,0.34);
 }
 #container #mobile-nav #header {
-  padding: 10px 0 0 0;
+  padding: -8px 0 0 0;
 }
 #container #mobile-nav #header .profilepic {
   display: block;
@@ -2089,7 +2089,7 @@ a {
 }
 #header .header-nav .social {
   margin-right: 15px;
-  margin-top: 10px;
+  margin-top: -8px;
   text-align: center;
 }
 #header .header-nav .social li {
