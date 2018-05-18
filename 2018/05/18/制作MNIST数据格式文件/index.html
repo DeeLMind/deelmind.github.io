@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://deelmind.cn/file/MNIST/img/mnis3tHeader.png">
 <meta property="og:image" content="http://deelmind.cn/file/MNIST/img/mnis1tHeader.png">
 <meta property="og:image" content="http://deelmind.cn/file/MNIST/img/num.png">
-<meta property="og:updated_time" content="2018-05-18T02:39:15.457Z">
+<meta property="og:updated_time" content="2018-05-18T04:03:03.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="制作MNIST数据格式文件">
 <meta name="twitter:description" content="简介: 教你如何制作MNIST数据集！">
@@ -326,7 +326,7 @@
 
 </li>
 </ul>
-<h3 id="ID1"><a href="#ID1" class="headerlink" title="ID1"></a>ID1</h3><ul>
+<h3 id="IDX1"><a href="#IDX1" class="headerlink" title="IDX1"></a>IDX1</h3><ul>
 <li>第一个4 字节：文件标志</li>
 <li>第二个4 字节：图片张数<br>后面都是标签，就是每张图片对应的数字是什么<div align="center"><br><img src="http://deelmind.cn/file/MNIST/img/mnis1tHeader.png" alt="Alt text"><br></div>
 
@@ -388,7 +388,7 @@
         <p><span>本文标题:</span><a href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
         <p><span>发布时间:</span>2018年05月18日 - 09时50分</p>
-        <p><span>最后更新:</span>2018年05月18日 - 10时39分</p>
+        <p><span>最后更新:</span>2018年05月18日 - 12时03分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/18/制作MNIST数据格式文件/" title="制作MNIST数据格式文件">http://deelmind.github.com/2018/05/18/制作MNIST数据格式文件/</a>
             <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/05/18/制作MNIST数据格式文件/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -404,6 +404,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2018/05/18/什么是one-hot/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          什么是one_hot
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/04/15/Sqlmap详细总结/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Sqlmap详细总结</div>
@@ -417,7 +426,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是MNIST数据集"><span class="toc-number">1.</span> <span class="toc-text">什么是MNIST数据集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MNIST-IDX文件格式解析"><span class="toc-number">2.</span> <span class="toc-text">MNIST-IDX文件格式解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDX3"><span class="toc-number">2.0.1.</span> <span class="toc-text">IDX3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ID1"><span class="toc-number">2.0.2.</span> <span class="toc-text">ID1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析数据"><span class="toc-number">2.0.3.</span> <span class="toc-text">解析数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#怎么制作自己的MNIST文件呢"><span class="toc-number">3.</span> <span class="toc-text">怎么制作自己的MNIST文件呢</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是MNIST数据集"><span class="toc-number">1.</span> <span class="toc-text">什么是MNIST数据集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MNIST-IDX文件格式解析"><span class="toc-number">2.</span> <span class="toc-text">MNIST-IDX文件格式解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDX3"><span class="toc-number">2.0.1.</span> <span class="toc-text">IDX3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDX1"><span class="toc-number">2.0.2.</span> <span class="toc-text">IDX1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析数据"><span class="toc-number">2.0.3.</span> <span class="toc-text">解析数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#怎么制作自己的MNIST文件呢"><span class="toc-number">3.</span> <span class="toc-text">怎么制作自己的MNIST文件呢</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -456,7 +465,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/05/18/什么是one-hot/" title="上一篇: 什么是one_hot">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -465,7 +476,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/缺少头文件unistd-h/">缺少头文件unistd.h</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/Hexo莫名其妙错误/">Hexo莫名其妙错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown语法/">MarkDown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown数学符号/">MarkDown数学符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/机器学习-SVM/">机器学习-SVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/GitHub单独下载文件夹/">GitHub单独下载文件夹</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/什么是one-hot/">什么是one_hot</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/缺少头文件unistd-h/">缺少头文件unistd.h</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/Hexo莫名其妙错误/">Hexo莫名其妙错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown语法/">MarkDown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown数学符号/">MarkDown数学符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/机器学习-SVM/">机器学习-SVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/GitHub单独下载文件夹/">GitHub单独下载文件夹</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
