@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://deelmind.cn/file/MNIST/img/mnis3tHeader.png">
 <meta property="og:image" content="http://deelmind.cn/file/MNIST/img/mnis1tHeader.png">
 <meta property="og:image" content="http://deelmind.cn/file/MNIST/img/num.png">
-<meta property="og:updated_time" content="2018-05-18T02:27:24.383Z">
+<meta property="og:updated_time" content="2018-05-18T02:39:15.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="制作MNIST数据格式文件">
 <meta name="twitter:description" content="简介: 教你如何制作MNIST数据集！">
@@ -313,11 +313,19 @@
           
         <p>简介: 教你如何制作MNIST数据集！</p>
 <a id="more"></a>
-<h1 id="什么是MNIST数据集"><a href="#什么是MNIST数据集" class="headerlink" title="什么是MNIST数据集"></a>什么是MNIST数据集</h1><p>MNIST数据集是大牛们制作常用学习的手写数字图片文件，是二进制文件(idx文件格式)，里面包含了所有图片信息，包括图片数目，图片大小，具体内容可到<a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">官方</a>查看</p>
-<div align="center"><br><img src="http://deelmind.cn/file/MNIST/img/mnist.png" alt="Alt text"><br></div><br>里面有两类，一类是训练集，另一类是测试集，就是有两批不同的图片而已<br><br># MNIST-IDX文件格式解析<br>因为MNIST是手写数字图片，所以会包括图片和对应的标签，也就是每一张图片都会对应一个具体数字，还是<a href="http://deelmind.cn/2018/01/29/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-SVM/#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%9A" target="_blank" rel="noopener">监督学习</a>,所以需要数据和对应标签，例如：第一张图片是数据存放在idx3-ubyte里面，但是机器不知道它是几，所以需要给它一个标签确定它是数字几，所以需要另一个文件idx1-ubyte这个里面存放的是和图片对应的标签，当然顺序都是一一对应的<br><br>### IDX3<br><em> 第一个4 字节：文件标志
-</em> 第二个4 字节：图片张数<br><em> 第三个4 字节：图片宽度
-</em> 第四个4 字节：图片高度<br>后面都是数据，就是图片展开一行一行追加的数据<br><div align="center"><br><img src="http://deelmind.cn/file/MNIST/img/mnis3tHeader.png" alt="Alt text"><br></div>
+<h1 id="什么是MNIST数据集"><a href="#什么是MNIST数据集" class="headerlink" title="什么是MNIST数据集"></a>什么是MNIST数据集</h1><p>MNIST数据集是大牛们制作常用学习的手写数字图片文件，是二进制文件(idx文件格式)，里面包含了所有图片信息，包括图片数目，图片大小，具体内容可到<a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">官方</a>查看<br>里面有两类，一类是训练集，另一类是测试集，就是有两批不同的图片而已</p>
+<div align="center"><br><img src="http://deelmind.cn/file/MNIST/img/mnist.png" alt="Alt text"><br></div>
 
+
+<h1 id="MNIST-IDX文件格式解析"><a href="#MNIST-IDX文件格式解析" class="headerlink" title="MNIST-IDX文件格式解析"></a>MNIST-IDX文件格式解析</h1><p>因为MNIST是手写数字图片，所以会包括图片和对应的标签，也就是每一张图片都会对应一个具体数字，还是<a href="http://deelmind.cn/2018/01/29/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-SVM/#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%9A" target="_blank" rel="noopener">监督学习</a>,所以需要数据和对应标签，例如：第一张图片是数据存放在idx3-ubyte里面，但是机器不知道它是几，所以需要给它一个标签确定它是数字几，所以需要另一个文件idx1-ubyte这个里面存放的是和图片对应的标签，当然顺序都是一一对应的</p>
+<h3 id="IDX3"><a href="#IDX3" class="headerlink" title="IDX3"></a>IDX3</h3><ul>
+<li>第一个4 字节：文件标志</li>
+<li>第二个4 字节：图片张数</li>
+<li>第三个4 字节：图片宽度</li>
+<li>第四个4 字节：图片高度<br>后面都是数据，就是图片展开一行一行追加的数据<div align="center"><br><img src="http://deelmind.cn/file/MNIST/img/mnis3tHeader.png" alt="Alt text"><br></div>
+
+</li>
+</ul>
 <h3 id="ID1"><a href="#ID1" class="headerlink" title="ID1"></a>ID1</h3><ul>
 <li>第一个4 字节：文件标志</li>
 <li>第二个4 字节：图片张数<br>后面都是标签，就是每张图片对应的数字是什么<div align="center"><br><img src="http://deelmind.cn/file/MNIST/img/mnis1tHeader.png" alt="Alt text"><br></div>
@@ -380,7 +388,7 @@
         <p><span>本文标题:</span><a href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
         <p><span>发布时间:</span>2018年05月18日 - 09时50分</p>
-        <p><span>最后更新:</span>2018年05月18日 - 10时27分</p>
+        <p><span>最后更新:</span>2018年05月18日 - 10时39分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/18/制作MNIST数据格式文件/" title="制作MNIST数据格式文件">http://deelmind.github.com/2018/05/18/制作MNIST数据格式文件/</a>
             <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/05/18/制作MNIST数据格式文件/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -409,7 +417,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是MNIST数据集"><span class="toc-number">1.</span> <span class="toc-text">什么是MNIST数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ID1"><span class="toc-number">1.0.1.</span> <span class="toc-text">ID1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析数据"><span class="toc-number">1.0.2.</span> <span class="toc-text">解析数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#怎么制作自己的MNIST文件呢"><span class="toc-number">2.</span> <span class="toc-text">怎么制作自己的MNIST文件呢</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是MNIST数据集"><span class="toc-number">1.</span> <span class="toc-text">什么是MNIST数据集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MNIST-IDX文件格式解析"><span class="toc-number">2.</span> <span class="toc-text">MNIST-IDX文件格式解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDX3"><span class="toc-number">2.0.1.</span> <span class="toc-text">IDX3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ID1"><span class="toc-number">2.0.2.</span> <span class="toc-text">ID1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析数据"><span class="toc-number">2.0.3.</span> <span class="toc-text">解析数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#怎么制作自己的MNIST文件呢"><span class="toc-number">3.</span> <span class="toc-text">怎么制作自己的MNIST文件呢</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
