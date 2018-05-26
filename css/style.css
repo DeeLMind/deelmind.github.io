@@ -2089,7 +2089,7 @@ a {
 }
 #header .header-nav .social {
   margin-right: 15px;
-  margin-top: -8px;
+  margin-top: 0px;
   text-align: center;
 }
 #header .header-nav .social li {
