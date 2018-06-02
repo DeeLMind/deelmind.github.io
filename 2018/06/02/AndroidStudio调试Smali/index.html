@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>视频教学 | DeeLMind</title>
+  <title>AndroidStudio调试Smali | DeeLMind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机器学习SVM(Youtube &amp;amp; Blibli)YoutubeBilibili">
-<meta name="keywords" content="DeeLMind | 逆向工程 | 网络安全 | 病毒分析 | 机器学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="视频教学">
-<meta property="og:url" content="http://deelmind.github.com/video/index.html">
+  <meta name="description" content="简介: 利用Android Studio 调试 Smali">
+<meta name="keywords" content="Android,逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidStudio调试Smali">
+<meta property="og:url" content="http://deelmind.github.com/2018/06/02/AndroidStudio调试Smali/index.html">
 <meta property="og:site_name" content="DeeLMind">
-<meta property="og:description" content="机器学习SVM(Youtube &amp;amp; Blibli)YoutubeBilibili">
+<meta property="og:description" content="简介: 利用Android Studio 调试 Smali">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-09T13:09:44.647Z">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/1.png">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/2.png">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/3.png">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/4.png">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/5.png">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/6.png">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/7.png">
+<meta property="og:image" content="http://deelmind.cn/file/as-smali/img/8.png">
+<meta property="og:updated_time" content="2018-06-02T08:27:48.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="视频教学">
-<meta name="twitter:description" content="机器学习SVM(Youtube &amp;amp; Blibli)YoutubeBilibili">
+<meta name="twitter:title" content="AndroidStudio调试Smali">
+<meta name="twitter:description" content="简介: 利用Android Studio 调试 Smali">
+<meta name="twitter:image" content="http://deelmind.cn/file/as-smali/img/1.png">
   
     <link rel="alternative" href="/atom.xml" title="DeeLMind" type="application/atom+xml">
   
@@ -42,7 +51,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -268,11 +277,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AndroidStudio调试Smali" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/video/index.html" class="article-date">
-      <time datetime="2018-04-09T12:50:30.000Z" itemprop="datePublished">2018-04-09</time>
+      <a href="/2018/06/02/AndroidStudio调试Smali/" class="article-date">
+      <time datetime="2018-06-02T07:57:59.000Z" itemprop="datePublished">2018-06-02</time>
 </a>
     </div>
   
@@ -285,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      视频教学
+      AndroidStudio调试Smali
     </h1>
   
 
@@ -295,6 +304,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向/">逆向</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -302,44 +315,28 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p>简介: 利用Android Studio 调试 Smali</p>
+<a id="more"></a>
+<h3 id="安装smalidea-插件"><a href="#安装smalidea-插件" class="headerlink" title="安装smalidea 插件"></a>安装smalidea 插件</h3><p>在Android Studio里面安装 <a href="http://deelmind.cn/file/as-smali/smalidea-0.05.zip" target="_blank" rel="noopener">smalidea</a> 插件</p>
+<div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/1.png" alt="Alt text"><br></div>
 
+<h3 id="打开反编译工程"><a href="#打开反编译工程" class="headerlink" title="打开反编译工程"></a>打开反编译工程</h3><p>首先找到 JEB 或者 改之理 或者 Android Killer 反编译APK的工程目录</p>
+<div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/2.png" alt="Alt text"><br></div>
 
+<p>用 Android Studio 打开这个目录</p>
+<div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/3.png" alt="Alt text"><br></div>
 
-          
-        <h1 id="机器学习SVM-Youtube-amp-Blibli"><a href="#机器学习SVM-Youtube-amp-Blibli" class="headerlink" title="机器学习SVM(Youtube &amp; Blibli)"></a>机器学习SVM(Youtube &amp; Blibli)</h1><p><a href="https://www.youtube.com/watch?v=dAhtAUdMuXw" target="_blank" rel="noopener">Youtube</a><br><a href="https://www.bilibili.com/video/av20148148" target="_blank" rel="noopener">Bilibili</a></p>
+<p>然后在需要的地方设置断点</p>
+<div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/4.png" alt="Alt text"><br></div>
 
+<h3 id="调试模式打开APK"><a href="#调试模式打开APK" class="headerlink" title="调试模式打开APK"></a>调试模式打开APK</h3><p>先在JEB里面找到包名</p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/5.png" alt="Alt text"><br></div><br><code>adb shell am start -D -n com.example.administrator.test/.MainActivity</code></p>
+<h3 id="转发端口"><a href="#转发端口" class="headerlink" title="转发端口"></a>转发端口</h3><p><code>adb shell</code><br><code>ps</code></p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/6.png" alt="Alt text"><br></div></p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/7.png" alt="Alt text"><br></div><br><code>adb forward tcp:8888 jdwp:11396</code></p>
+<h3 id="配置Android-Studio"><a href="#配置Android-Studio" class="headerlink" title="配置Android Studio"></a>配置Android Studio</h3><p>设置和我们上一步转发的端口一样的端口8888</p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/as-smali/img/8.png" alt="Alt text"><br></div></p>
+<h3 id="然后调试即可"><a href="#然后调试即可" class="headerlink" title="然后调试即可"></a>然后调试即可</h3>
       
       
         <div class="page-reward">
@@ -388,10 +385,67 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/02/AndroidStudio调试Smali/">AndroidStudio调试Smali</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
+        <p><span>发布时间:</span>2018年06月02日 - 15时57分</p>
+        <p><span>最后更新:</span>2018年06月02日 - 16时27分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/02/AndroidStudio调试Smali/" title="AndroidStudio调试Smali">http://deelmind.github.com/2018/06/02/AndroidStudio调试Smali/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/06/02/AndroidStudio调试Smali/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/30/Windows进程提权/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows进程提权</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装smalidea-插件"><span class="toc-number">1.</span> <span class="toc-text">安装smalidea 插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开反编译工程"><span class="toc-number">2.</span> <span class="toc-text">打开反编译工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调试模式打开APK"><span class="toc-number">3.</span> <span class="toc-text">调试模式打开APK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转发端口"><span class="toc-number">4.</span> <span class="toc-text">转发端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Android-Studio"><span class="toc-number">5.</span> <span class="toc-text">配置Android Studio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#然后调试即可"><span class="toc-number">6.</span> <span class="toc-text">然后调试即可</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -400,6 +454,37 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/05/30/Windows进程提权/" title="下一篇: Windows进程提权">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/AndroidStudio调试Smali/">AndroidStudio调试Smali</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/30/Windows进程提权/">Windows进程提权</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/Windows使用IDA调试IOS应用/">Windows使用IDA调试IOS应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/26/什么是embedding-words/">什么是embedding words</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/什么是one-hot/">什么是one_hot</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/缺少头文件unistd-h/">缺少头文件unistd.h</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/Hexo莫名其妙错误/">Hexo莫名其妙错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown语法/">MarkDown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown数学符号/">MarkDown数学符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/机器学习-SVM/">机器学习-SVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/GitHub单独下载文件夹/">GitHub单独下载文件夹</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
