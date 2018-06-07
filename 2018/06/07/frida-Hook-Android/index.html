@@ -3,19 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2018 | DeeLMind</title>
+  <title>frida-Hook-Android | DeeLMind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DeeLMind | 逆向工程 | 网络安全 | 病毒分析 | 机器学习">
-<meta name="keywords" content="DeeLMind | 逆向工程 | 网络安全 | 病毒分析 | 机器学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DeeLMind">
-<meta property="og:url" content="http://deelmind.github.com/archives/2018/index.html">
+  <meta name="description" content="简介: 利用Frida Hook Android，教你如何学习Frida">
+<meta name="keywords" content="Android,逆向,HOOK,Frida">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frida-Hook-Android">
+<meta property="og:url" content="http://deelmind.github.com/2018/06/07/frida-Hook-Android/index.html">
 <meta property="og:site_name" content="DeeLMind">
-<meta property="og:description" content="DeeLMind | 逆向工程 | 网络安全 | 病毒分析 | 机器学习">
+<meta property="og:description" content="简介: 利用Frida Hook Android，教你如何学习Frida">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://deelmind.cn/file/frida/1.png">
+<meta property="og:image" content="http://deelmind.cn/file/frida/2.png">
+<meta property="og:updated_time" content="2018-06-07T06:04:50.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeeLMind">
-<meta name="twitter:description" content="DeeLMind | 逆向工程 | 网络安全 | 病毒分析 | 机器学习">
+<meta name="twitter:title" content="frida-Hook-Android">
+<meta name="twitter:description" content="简介: 利用Frida Hook Android，教你如何学习Frida">
+<meta name="twitter:image" content="http://deelmind.cn/file/frida/1.png">
   
     <link rel="alternative" href="/atom.xml" title="DeeLMind" type="application/atom+xml">
   
@@ -41,8 +45,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -267,338 +271,207 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-frida-Hook-Android" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/06/07/frida-Hook-Android/" class="archive-article-date">
-      <time datetime="2018-06-07T03:46:56.000Z" itemprop="datePublished">06-07</time>
+    <div class="article-meta">
+      <a href="/2018/06/07/frida-Hook-Android/" class="article-date">
+      <time datetime="2018-06-07T03:46:56.000Z" itemprop="datePublished">2018-06-07</time>
 </a>
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/07/frida-Hook-Android/">frida-Hook-Android</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      frida-Hook-Android
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frida/">Frida</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HOOK/">HOOK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向/">逆向</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </div>
+      
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/06/06/抓手机包/" class="archive-article-date">
-      <time datetime="2018-06-06T07:22:12.000Z" itemprop="datePublished">06-06</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>简介: 利用Frida Hook Android，教你如何学习Frida</p>
+<a id="more"></a>
+<h3 id="Firda"><a href="#Firda" class="headerlink" title="Firda"></a>Firda</h3><p><a href="https://www.frida.re/" target="_blank" rel="noopener">Frida</a> 是一个Hook 框架，基于Python 可以跨平台 Windows,IOS,Android … ,但是有个缺点就是必须基于电脑才行</p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>python-frida 和 frida-server 一定要匹配</p>
+<h3 id="代码例子"><a href="#代码例子" class="headerlink" title="代码例子"></a>代码例子</h3><p>HOOK自己写的一个程序,HOOK之前</p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/frida/1.png" alt="Alt text"><br></div><br>HOOK之后</p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/frida/2.png" alt="Alt text"><br></div><br><figure class="highlight python"><figcaption><span>python []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida, sys</span><br><span class="line"></span><br><span class="line">packname = <span class="string">'com.example.administrator.test'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(message, data)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> message[<span class="string">'type'</span>] == <span class="string">'send'</span>:</span><br><span class="line">		print(<span class="string">"[*] &#123;0&#125;"</span>.format(message[<span class="string">'payload'</span>]))</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		print(message)</span><br><span class="line"></span><br><span class="line">jscode = <span class="string">"""</span></span><br><span class="line"><span class="string">Java.perform(function () &#123;</span></span><br><span class="line"><span class="string">	// Function to hook is defined here</span></span><br><span class="line"><span class="string">	var MainActivity = Java.use(packname + '.MainActivity');</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	// Whenever button is clicked</span></span><br><span class="line"><span class="string">	MainActivity.DeeLMind.implementation = function (v) &#123;</span></span><br><span class="line"><span class="string">		// Show a message to know that the function got called</span></span><br><span class="line"><span class="string">		send('onClick');</span></span><br><span class="line"><span class="string">		return "changeText";</span></span><br><span class="line"><span class="string">	&#125;;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">device = frida.get_usb_device()</span><br><span class="line">process = device.attach(packname)</span><br><span class="line">script = process.create_script(jscode)</span><br><span class="line">script.on(<span class="string">'message'</span>, on_message)</span><br><span class="line">print(<span class="string">'[*] Running Test'</span>)</span><br><span class="line">script.load()</span><br><span class="line">sys.stdin.read()</span><br></pre></td></tr></table></figure></p>
+<h3 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h3><p>代码jscode才是主要核心代码，是基于<a href="https://www.frida.re/docs/javascript-api/" target="_blank" rel="noopener">js</a>的，这个链接是帮助文档API，框架比较简单，jscode API 才是核心</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>谢谢支持</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏</div>
+            <div class="shang_payselect">
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/抓手机包/">抓手机包</a>
-    </h1>
-  
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
 
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/抓包/">抓包</a></li></ul>
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/07/frida-Hook-Android/">frida-Hook-Android</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
+        <p><span>发布时间:</span>2018年06月07日 - 11时46分</p>
+        <p><span>最后更新:</span>2018年06月07日 - 14时04分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/07/frida-Hook-Android/" title="frida-Hook-Android">http://deelmind.github.com/2018/06/07/frida-Hook-Android/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/06/07/frida-Hook-Android/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/06/抓手机包/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">抓手机包</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/06/06/UNICODE显示漏洞Windows/" class="archive-article-date">
-      <time datetime="2018-06-06T01:21:02.000Z" itemprop="datePublished">06-06</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/UNICODE显示漏洞Windows/">UNICODE显示漏洞Windows</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Firda"><span class="toc-number">1.</span> <span class="toc-text">Firda</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意点"><span class="toc-number">2.</span> <span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码例子"><span class="toc-number">3.</span> <span class="toc-text">代码例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意点-1"><span class="toc-number">4.</span> <span class="toc-text">注意点</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞/">漏洞</a></li></ul>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/06/06/抓手机包/" title="下一篇: 抓手机包">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/06/02/AndroidStudio调试Smali/" class="archive-article-date">
-      <time datetime="2018-06-02T07:57:59.000Z" itemprop="datePublished">06-02</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/02/AndroidStudio调试Smali/">AndroidStudio调试Smali</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向/">逆向</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/29/Windows使用IDA调试IOS应用/" class="archive-article-date">
-      <time datetime="2018-05-29T02:41:18.000Z" itemprop="datePublished">05-29</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/Windows使用IDA调试IOS应用/">Windows使用IDA调试IOS应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向/">逆向</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/26/什么是embedding-words/" class="archive-article-date">
-      <time datetime="2018-05-26T07:44:01.000Z" itemprop="datePublished">05-26</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/26/什么是embedding-words/">什么是embedding words</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/18/什么是one-hot/" class="archive-article-date">
-      <time datetime="2018-05-18T08:50:39.000Z" itemprop="datePublished">05-18</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/18/什么是one-hot/">什么是one_hot</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/18/制作MNIST数据格式文件/" class="archive-article-date">
-      <time datetime="2018-05-18T01:50:15.000Z" itemprop="datePublished">05-18</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/17/IDA调试Android/" class="archive-article-date">
-      <time datetime="2018-05-17T11:40:07.000Z" itemprop="datePublished">05-17</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/17/IDA调试Android/">IDA调试Android</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDA/">IDA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向/">逆向</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/04/15/Sqlmap详细总结/" class="archive-article-date">
-      <time datetime="2018-04-15T06:31:38.000Z" itemprop="datePublished">04-15</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sqlmap/">Sqlmap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透/">渗透</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
-  
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/frida-Hook-Android/">frida-Hook-Android</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/抓手机包/">抓手机包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/UNICODE显示漏洞Windows/">UNICODE显示漏洞Windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/AndroidStudio调试Smali/">AndroidStudio调试Smali</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/Windows使用IDA调试IOS应用/">Windows使用IDA调试IOS应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/26/什么是embedding-words/">什么是embedding words</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/什么是one-hot/">什么是one_hot</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/17/IDA调试Android/">IDA调试Android</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/缺少头文件unistd-h/">缺少头文件unistd.h</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/Hexo莫名其妙错误/">Hexo莫名其妙错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown语法/">MarkDown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown数学符号/">MarkDown数学符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/机器学习-SVM/">机器学习-SVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/GitHub单独下载文件夹/">GitHub单独下载文件夹</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
+
+    <script>
+        
+    </script>
 
 </div>
       <footer id="footer">
@@ -685,17 +558,6 @@ MathJax.Hub.Queue(function() {
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
