@@ -3,20 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MarkDown数学符号 | DeeLMind</title>
+  <title>最新Android-Studio搭建Xposed-Hook环境 | DeeLMind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介:MarkDown常用数学符号总结">
-<meta name="keywords" content="Note,Markdown,Math">
+  <meta name="description" content="简介: 最新Android-Studio搭建Xposed-Hook环境，有坑，请注意">
+<meta name="keywords" content="Android,Hook,Xpose">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MarkDown数学符号">
-<meta property="og:url" content="http://deelmind.github.com/2018/01/29/MarkDown数学符号/index.html">
+<meta property="og:title" content="最新Android-Studio搭建Xposed-Hook环境">
+<meta property="og:url" content="http://deelmind.github.com/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/index.html">
 <meta property="og:site_name" content="DeeLMind">
-<meta property="og:description" content="简介:MarkDown常用数学符号总结">
+<meta property="og:description" content="简介: 最新Android-Studio搭建Xposed-Hook环境，有坑，请注意">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-15T09:34:21.771Z">
+<meta property="og:image" content="http://deelmind.cn/file/xpose/img/1.png">
+<meta property="og:image" content="http://deelmind.cn/file/xpose/img/2.png">
+<meta property="og:image" content="http://deelmind.cn/file/xpose/img/3.png">
+<meta property="og:image" content="http://deelmind.cn/file/xpose/img/4.png">
+<meta property="og:image" content="http://deelmind.cn/file/xpose/img/5.png">
+<meta property="og:image" content="http://deelmind.cn/file/xpose/img/6.png">
+<meta property="og:image" content="http://deelmind.cn/file/xpose/img/7.png">
+<meta property="og:updated_time" content="2018-06-09T09:42:22.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MarkDown数学符号">
-<meta name="twitter:description" content="简介:MarkDown常用数学符号总结">
+<meta name="twitter:title" content="最新Android-Studio搭建Xposed-Hook环境">
+<meta name="twitter:description" content="简介: 最新Android-Studio搭建Xposed-Hook环境，有坑，请注意">
+<meta name="twitter:image" content="http://deelmind.cn/file/xpose/img/1.png">
   
     <link rel="alternative" href="/atom.xml" title="DeeLMind" type="application/atom+xml">
   
@@ -268,11 +276,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-MarkDown数学符号" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-最新Android-Studio搭建Xposed-Hook环境" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/01/29/MarkDown数学符号/" class="article-date">
-      <time datetime="2018-01-29T03:34:57.000Z" itemprop="datePublished">2018-01-29</time>
+      <a href="/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/" class="article-date">
+      <time datetime="2018-06-09T09:05:24.000Z" itemprop="datePublished">2018-06-09</time>
 </a>
     </div>
   
@@ -285,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MarkDown数学符号
+      最新Android-Studio搭建Xposed-Hook环境
     </h1>
   
 
@@ -296,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Note/">Note</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hook/">Hook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xpose/">Xpose</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -306,477 +314,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>简介:MarkDown常用数学符号总结</p>
+        <p>简介: 最新Android-Studio搭建Xposed-Hook环境，有坑，请注意</p>
 <a id="more"></a>
-<div style="color:#F00"><br>记得一定要加\$\$才可以显示效果<br>遇到=号时，两边都要加<br>\$\$ = \$\$<br></div>
+<h3 id="新建AS工程"><a href="#新建AS工程" class="headerlink" title="新建AS工程"></a>新建AS工程</h3><h3 id="导入XposedBrigeApi-jar"><a href="#导入XposedBrigeApi-jar" class="headerlink" title="导入XposedBrigeApi.jar"></a>导入XposedBrigeApi.jar</h3><p><a href="https://api.xposed.info/reference/packages.html" target="_blank" rel="noopener">XposeAPI</a><br><a href="https://github.com/rovo89/XposedBridge/wiki/Using-the-Xposed-Framework-API" target="_blank" rel="noopener">官方帮助文档</a></p>
+<div align="center"><br><img src="http://deelmind.cn/file/xpose/img/1.png" alt="Alt text"><br></div><br>右键<code>Add As Library...</code><br><code>Build -&gt; Edit Libraries and Dependencies...</code><br>一定要改成<code>compile olny</code> 不是 <code>Provided</code><br><div align="center"><br><img src="http://deelmind.cn/file/xpose/img/2.png" alt="Alt text"><br></div>
 
-<h3 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h3><p>语法：</p>
-<blockquote>
-<p>\$ 数学符号必须加在里面 \$</p>
-</blockquote>
-<h3 id="上标"><a href="#上标" class="headerlink" title="上标"></a>上标</h3><p>语法：<br>\$x^2\$</p>
-<blockquote>
-<p>$x^2$</p>
-</blockquote>
-<h3 id="包括整体"><a href="#包括整体" class="headerlink" title="包括整体"></a>包括整体</h3><p>语法：<br>{y^x}</p>
-<blockquote>
-<p>$Z^{yx}$</p>
-</blockquote>
-<h3 id="大括号"><a href="#大括号" class="headerlink" title="大括号"></a>大括号</h3><p>语法：<br>\left 或者 \right</p>
-<blockquote>
-<p>$ \left(大括号)\right. $</p>
-</blockquote>
-<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>语法：<br>frac{ x }{ y }</p>
-<blockquote>
-<p>$ \frac{ x }{ y } $</p>
-</blockquote>
-<h3 id="开方"><a href="#开方" class="headerlink" title="开方"></a>开方</h3><p>语法：<br>\sqrt{ x }</p>
-<blockquote>
-<p>$\sqrt{ x }$<br>\sqrt[ n ]{ x }<br>$\sqrt[ 3 ]{ x }$</p>
-</blockquote>
-<h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><p>语法：<br>\ldots表示与文本底线对齐的省略号，\cdots表示与文本中线对齐的省略号</p>
-<blockquote>
-<p>$\ldots  \cdots$</p>
-</blockquote>
-<h3 id="矢量"><a href="#矢量" class="headerlink" title="矢量"></a>矢量</h3><p>语法：<br>\vec{ a }</p>
-<blockquote>
-<p>$\vec{ a }$</p>
-</blockquote>
-<h3 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h3><p>语法：<br>\int_0^2 x^2 {\rm d}x</p>
-<blockquote>
-<p>$\int_0^2 x^2 {\rm d}x$</p>
-</blockquote>
-<h3 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h3><p>语法：<br>\lim\limits_{n \rightarrow +\infty} \frac{1}{n(n+1)}</p>
-<blockquote>
-<p>$\lim\limits_{n \rightarrow +\infty} \frac{1}{n(n+1)}$</p>
-</blockquote>
-<h3 id="累加"><a href="#累加" class="headerlink" title="累加"></a>累加</h3><p>语法：<br>\sum_{i=0}^n \frac{1}{i^2}</p>
-<blockquote>
-<p>$\sum_{i=0}^n \frac{1}{i^2}$</p>
-</blockquote>
-<h3 id="累乘"><a href="#累乘" class="headerlink" title="累乘"></a>累乘</h3><p>语法：<br>\prod_{i=0}^n \frac{1}{i^2}</p>
-<blockquote>
-<p>$\prod_{i=0}^n \frac{1}{i^2}$</p>
-</blockquote>
-<h3 id="向量转置"><a href="#向量转置" class="headerlink" title="向量转置"></a>向量转置</h3><p>语法：<br>T’</p>
-<blockquote>
-<p>$T’$</p>
-</blockquote>
-<h3 id="向量矩阵"><a href="#向量矩阵" class="headerlink" title="向量矩阵"></a>向量矩阵</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$$\begin&#123;matrix&#125;</span><br><span class="line">1&amp;0&amp;0\\\\</span><br><span class="line">0&amp;1&amp;0\\\\</span><br><span class="line">0&amp;0&amp;1\\\\</span><br><span class="line">\end&#123;matrix&#125;$$</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>matrix</li>
-<li>pmatrix ：小括号边框</li>
-<li>bmatrix ：中括号边框</li>
-<li>Bmatrix ：大括号边框</li>
-<li>vmatrix ：单竖线边框</li>
-<li>Vmatrix ：双竖线边框</li>
-</ul>
-<p>$$\begin{bmatrix}<br>1&amp;0&amp;0\\<br>0&amp;1&amp;0\\<br>0&amp;0&amp;1\\<br>\end{bmatrix}$$</p>
-<p>$$\begin{Bmatrix}<br>1&amp;0&amp;0\\<br>0&amp;1&amp;0\\<br>0&amp;0&amp;1\\<br>\end{Bmatrix}$$</p>
-<h3 id="关系运算符："><a href="#关系运算符：" class="headerlink" title="关系运算符："></a>关系运算符：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>±：</td>
-<td>\pm</td>
-</tr>
-<tr>
-<td>×：</td>
-<td>\times</td>
-</tr>
-<tr>
-<td>÷：</td>
-<td>\div</td>
-</tr>
-<tr>
-<td>∣：</td>
-<td>\mid</td>
-</tr>
-<tr>
-<td>∤：</td>
-<td>\nmid</td>
-</tr>
-<tr>
-<td>⋅：</td>
-<td>\cdot</td>
-</tr>
-<tr>
-<td>∘：</td>
-<td>\circ</td>
-</tr>
-<tr>
-<td>∗：</td>
-<td>\ast</td>
-</tr>
-<tr>
-<td>⨀：</td>
-<td>\bigodot</td>
-</tr>
-<tr>
-<td>⨂：</td>
-<td>\bigotimes</td>
-</tr>
-<tr>
-<td>⨁：</td>
-<td>\bigoplus</td>
-</tr>
-<tr>
-<td>≤：</td>
-<td>\leq</td>
-</tr>
-<tr>
-<td>≥：</td>
-<td>\geq</td>
-</tr>
-<tr>
-<td>≠：</td>
-<td>\neq</td>
-</tr>
-<tr>
-<td>≈：</td>
-<td>\approx</td>
-</tr>
-<tr>
-<td>≡：</td>
-<td>\equiv</td>
-</tr>
-<tr>
-<td>∑：</td>
-<td>\sum</td>
-</tr>
-<tr>
-<td>∏：</td>
-<td>\prod</td>
-</tr>
-<tr>
-<td>∐：</td>
-<td>\coprod</td>
-</tr>
-</tbody>
-</table>
-<h3 id="集合运算符："><a href="#集合运算符：" class="headerlink" title="集合运算符："></a>集合运算符：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>∅：</td>
-<td>\emptyset</td>
-</tr>
-<tr>
-<td>∈：</td>
-<td>\in</td>
-</tr>
-<tr>
-<td>∉：</td>
-<td>\notin</td>
-</tr>
-<tr>
-<td>⊂：</td>
-<td>\subset</td>
-</tr>
-<tr>
-<td>⊃：</td>
-<td>\supset</td>
-</tr>
-<tr>
-<td>⊆：</td>
-<td>\subseteq</td>
-</tr>
-<tr>
-<td>⊇：</td>
-<td>\supseteq</td>
-</tr>
-<tr>
-<td>⋂：</td>
-<td>\bigcap</td>
-</tr>
-<tr>
-<td>⋃：</td>
-<td>\bigcup</td>
-</tr>
-<tr>
-<td>⋁：</td>
-<td>\bigvee</td>
-</tr>
-<tr>
-<td>⋀：</td>
-<td>\bigwedge</td>
-</tr>
-<tr>
-<td>⨄：</td>
-<td>\biguplus</td>
-</tr>
-<tr>
-<td>⨆：</td>
-<td>\bigsqcup</td>
-</tr>
-</tbody>
-</table>
-<h3 id="对数运算符："><a href="#对数运算符：" class="headerlink" title="对数运算符："></a>对数运算符：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>log：</td>
-<td>\log</td>
-</tr>
-<tr>
-<td>lg：</td>
-<td>\lg</td>
-</tr>
-<tr>
-<td>ln：</td>
-<td>\ln</td>
-</tr>
-</tbody>
-</table>
-<h3 id="三角运算符："><a href="#三角运算符：" class="headerlink" title="三角运算符："></a>三角运算符：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>⊥：</td>
-<td>\bot</td>
-</tr>
-<tr>
-<td>∠：</td>
-<td>\angle</td>
-</tr>
-<tr>
-<td>30∘:</td>
-<td>30^\circ</td>
-</tr>
-<tr>
-<td>sin：</td>
-<td>\sin</td>
-</tr>
-<tr>
-<td>cos：</td>
-<td>\cos</td>
-</tr>
-<tr>
-<td>tan：</td>
-<td>\tan</td>
-</tr>
-<tr>
-<td>cot：</td>
-<td>\cot</td>
-</tr>
-<tr>
-<td>sec：</td>
-<td>\sec</td>
-</tr>
-<tr>
-<td>csc：</td>
-<td>\csc</td>
-</tr>
-</tbody>
-</table>
-<h3 id="微积分运算符："><a href="#微积分运算符：" class="headerlink" title="微积分运算符："></a>微积分运算符：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>′：</td>
-<td>\prime</td>
-</tr>
-<tr>
-<td>∫：</td>
-<td>\int</td>
-</tr>
-<tr>
-<td>∬：</td>
-<td>\iint</td>
-</tr>
-<tr>
-<td>∭：</td>
-<td>\iiint</td>
-</tr>
-<tr>
-<td>⨌：</td>
-<td>\iiiint</td>
-</tr>
-<tr>
-<td>∮：</td>
-<td>\oint</td>
-</tr>
-<tr>
-<td>lim：</td>
-<td>\lim</td>
-</tr>
-<tr>
-<td>∞：</td>
-<td>\infty</td>
-</tr>
-<tr>
-<td>∇：</td>
-<td>\nabla</td>
-</tr>
-</tbody>
-</table>
-<h3 id="逻辑运算符："><a href="#逻辑运算符：" class="headerlink" title="逻辑运算符："></a>逻辑运算符：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>∵：</td>
-<td>\because</td>
-</tr>
-<tr>
-<td>∴：</td>
-<td>\therefore</td>
-</tr>
-<tr>
-<td>∀：</td>
-<td>\forall</td>
-</tr>
-<tr>
-<td>∃：</td>
-<td>\exists</td>
-</tr>
-<tr>
-<td>≠：</td>
-<td>\not=</td>
-</tr>
-<tr>
-<td>≯：</td>
-<td>\not&gt;</td>
-</tr>
-<tr>
-<td>⊄：</td>
-<td>\not\subset</td>
-</tr>
-</tbody>
-</table>
-<h3 id="戴帽符号："><a href="#戴帽符号：" class="headerlink" title="戴帽符号："></a>戴帽符号：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$\hat{y}$</td>
-<td>\hat{y}</td>
-</tr>
-<tr>
-<td>$\check{y}$</td>
-<td>\check{y}</td>
-</tr>
-<tr>
-<td>$\breve{y}$</td>
-<td>\breve{y}</td>
-</tr>
-</tbody>
-</table>
-<h3 id="连线符号："><a href="#连线符号：" class="headerlink" title="连线符号："></a>连线符号：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$\overline{a+b+c+d}$</td>
-<td>\overline{a+b+c+d}</td>
-</tr>
-<tr>
-<td>$$\underline{a+b+c+d}:</td>
-<td>\underline{a+b+c+d}</td>
-</tr>
-<tr>
-<td>$\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$</td>
-<td>\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}</td>
-</tr>
-</tbody>
-</table>
-<h3 id="箭头符号："><a href="#箭头符号：" class="headerlink" title="箭头符号："></a>箭头符号：</h3><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>↑：</td>
-<td>\uparrow</td>
-</tr>
-<tr>
-<td>↓：</td>
-<td>\downarrow</td>
-</tr>
-<tr>
-<td>⇑：</td>
-<td>\Uparrow</td>
-</tr>
-<tr>
-<td>⇓：</td>
-<td>\Downarrow</td>
-</tr>
-<tr>
-<td>→：</td>
-<td>\rightarrow</td>
-</tr>
-<tr>
-<td>←：</td>
-<td>\leftarrow</td>
-</tr>
-<tr>
-<td>⇒：</td>
-<td>\Rightarrow</td>
-</tr>
-<tr>
-<td>⇐：</td>
-<td>\Leftarrow</td>
-</tr>
-<tr>
-<td>⟶：</td>
-<td>\longrightarrow</td>
-</tr>
-<tr>
-<td>⟵：</td>
-<td>\longleftarrow</td>
-</tr>
-<tr>
-<td>⟹：</td>
-<td>\Longrightarrow</td>
-</tr>
-<tr>
-<td>⟸：</td>
-<td>\Longleftarrow</td>
-</tr>
-</tbody>
-</table>
-<h3 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h3><p>\alpha　A　<br>\beta　B　<br>\gamma　<br>\Gamma　<br>\delta　<br>\Delta　<br>\epsilon　E<br>\varepsilon　　<br>\zeta　Z　<br>\eta　H　<br>\theta　<br>\Theta　<br>\vartheta<br>\iota　I　<br>\kappa　K　<br>\lambda　<br>\Lambda　<br>\mu　M　<br>\nu　N<br>\xi　<br>\Xi　o　O　<br>\pi　<br>\Pi　<br>\varpi　　<br>\rho　P<br>\varrho　　<br>\sigma　<br>\Sigma　<br>\varsigma　　<br>\tau　T　<br>\upsilon　<br>\Upsilon<br>\phi　<br>\Phi　<br>\varphi　　<br>\chi　X　<br>\psi　<br>\Psi　<br>\omega　<br>\Omega</p>
-<div style="color:#F00"><br>记得一定要加\$\$才可以显示效果<br>遇到=号时，两边都要加<br>\$\$ = \$\$<br></div>
+<h3 id="新建assets-xposed-init"><a href="#新建assets-xposed-init" class="headerlink" title="新建assets/xposed_init"></a>新建assets/xposed_init</h3><p><div align="center"><br><img src="http://deelmind.cn/file/xpose/img/3.png" alt="Alt text"><br></div><br>写入你的包名.类名<br><code>com.geek.deelmind.xposehook.Hook</code></p>
+<h3 id="新建Hook类"><a href="#新建Hook类" class="headerlink" title="新建Hook类"></a>新建Hook类</h3><p><div align="center"><br><img src="http://deelmind.cn/file/xpose/img/4.png" alt="Alt text"><br></div><br>Hook类源码<br><figure class="highlight java"><figcaption><span>Xpose []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.geek.deelmind.xposehook;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> de.robv.android.xposed.IXposedHookLoadPackage;</span><br><span class="line"><span class="keyword">import</span> de.robv.android.xposed.XC_MethodHook;</span><br><span class="line"><span class="keyword">import</span> de.robv.android.xposed.callbacks.XC_LoadPackage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> de.robv.android.xposed.XposedHelpers.findAndHookMethod;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hook</span> <span class="keyword">implements</span> <span class="title">IXposedHookLoadPackage</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleLoadPackage</span><span class="params">(<span class="keyword">final</span> XC_LoadPackage.LoadPackageParam lpparam)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!lpparam.packageName.equals(<span class="string">"com.example.administrator.test"</span>))</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">		findAndHookMethod(<span class="string">"com.example.administrator.test.MainActivity"</span>, lpparam.classLoader, <span class="string">"DeeLMind"</span>, <span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">afterHookedMethod</span><span class="params">(XC_MethodHook.MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(XC_MethodHook.MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">				param.setResult (<span class="string">"Dragon"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改build-gradle"><a href="#修改build-gradle" class="headerlink" title="修改build.gradle"></a>修改build.gradle</h3><p><div align="center"><br><img src="http://deelmind.cn/file/xpose/img/5.png" alt="Alt text"><br></div></p>
+<h3 id="最重要一步"><a href="#最重要一步" class="headerlink" title="最重要一步"></a>最重要一步</h3><p><div align="center"><br><img src="http://deelmind.cn/file/xpose/img/6.png" alt="Alt text"><br></div></p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/xpose/img/7.png" alt="Alt text"><br></div></p>
+<p><div align="center" style="color:red"><br>一定要取消打勾，不然直接点击运行是失败的，只能build后手动安装，为了方便才做修改<br>一定要取消打勾，不然直接点击运行是失败的，只能build后手动安装，为了方便才做修改<br>一定要取消打勾，不然直接点击运行是失败的，只能build后手动安装，为了方便才做修改<br></div><br>切记，切记</p>
+<h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><p><a href="http://deelmind.cn/file/xpose/file/XposedBridgeApi-54.jar" target="_blank" rel="noopener">xpose模块</a><br><a href="http://deelmind.cn/file/xpose/file/xpose-Src.zip" target="_blank" rel="noopener">工程源码</a></p>
 
       
       
@@ -827,13 +376,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/01/29/MarkDown数学符号/">MarkDown数学符号</a></p>
+        <p><span>本文标题:</span><a href="/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/">最新Android-Studio搭建Xposed-Hook环境</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
-        <p><span>发布时间:</span>2018年01月29日 - 11时34分</p>
-        <p><span>最后更新:</span>2018年05月15日 - 17时34分</p>
+        <p><span>发布时间:</span>2018年06月09日 - 17时05分</p>
+        <p><span>最后更新:</span>2018年06月09日 - 17时42分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/01/29/MarkDown数学符号/" title="MarkDown数学符号">http://deelmind.github.com/2018/01/29/MarkDown数学符号/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/01/29/MarkDown数学符号/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/" title="最新Android-Studio搭建Xposed-Hook环境">http://deelmind.github.com/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -846,18 +395,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/01/29/MarkDown语法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/09/Dex文件格式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          MarkDown语法
+          Dex文件格式
         
       </div>
     </a>
   
   
-    <a href="/2018/01/29/机器学习-SVM/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机器学习-SVM</div>
+    <a href="/2018/06/07/frida-Hook-Android/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">frida-Hook-Android</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -868,7 +417,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#显示效果"><span class="toc-number">1.</span> <span class="toc-text">显示效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上标"><span class="toc-number">2.</span> <span class="toc-text">上标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包括整体"><span class="toc-number">3.</span> <span class="toc-text">包括整体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大括号"><span class="toc-number">4.</span> <span class="toc-text">大括号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分割线"><span class="toc-number">5.</span> <span class="toc-text">分割线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开方"><span class="toc-number">6.</span> <span class="toc-text">开方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#省略号"><span class="toc-number">7.</span> <span class="toc-text">省略号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矢量"><span class="toc-number">8.</span> <span class="toc-text">矢量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#积分"><span class="toc-number">9.</span> <span class="toc-text">积分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#极限"><span class="toc-number">10.</span> <span class="toc-text">极限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#累加"><span class="toc-number">11.</span> <span class="toc-text">累加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#累乘"><span class="toc-number">12.</span> <span class="toc-text">累乘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向量转置"><span class="toc-number">13.</span> <span class="toc-text">向量转置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向量矩阵"><span class="toc-number">14.</span> <span class="toc-text">向量矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系运算符："><span class="toc-number">15.</span> <span class="toc-text">关系运算符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合运算符："><span class="toc-number">16.</span> <span class="toc-text">集合运算符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对数运算符："><span class="toc-number">17.</span> <span class="toc-text">对数运算符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三角运算符："><span class="toc-number">18.</span> <span class="toc-text">三角运算符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微积分运算符："><span class="toc-number">19.</span> <span class="toc-text">微积分运算符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑运算符："><span class="toc-number">20.</span> <span class="toc-text">逻辑运算符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#戴帽符号："><span class="toc-number">21.</span> <span class="toc-text">戴帽符号：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连线符号："><span class="toc-number">22.</span> <span class="toc-text">连线符号：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#箭头符号："><span class="toc-number">23.</span> <span class="toc-text">箭头符号：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#希腊字母"><span class="toc-number">24.</span> <span class="toc-text">希腊字母</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建AS工程"><span class="toc-number">1.</span> <span class="toc-text">新建AS工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入XposedBrigeApi-jar"><span class="toc-number">2.</span> <span class="toc-text">导入XposedBrigeApi.jar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建assets-xposed-init"><span class="toc-number">3.</span> <span class="toc-text">新建assets/xposed_init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建Hook类"><span class="toc-number">4.</span> <span class="toc-text">新建Hook类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改build-gradle"><span class="toc-number">5.</span> <span class="toc-text">修改build.gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最重要一步"><span class="toc-number">6.</span> <span class="toc-text">最重要一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码下载"><span class="toc-number">7.</span> <span class="toc-text">源码下载</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -907,13 +456,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/01/29/MarkDown语法/" title="上一篇: MarkDown语法">
+            <a href="/2018/06/09/Dex文件格式/" title="上一篇: Dex文件格式">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/01/29/机器学习-SVM/" title="下一篇: 机器学习-SVM">
+            <a href="/2018/06/07/frida-Hook-Android/" title="下一篇: frida-Hook-Android">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Dex文件格式 | DeeLMind</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介: Dex文件格式讲解">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dex文件格式">
+<meta property="og:url" content="http://deelmind.github.com/2018/06/09/Dex文件格式/index.html">
+<meta property="og:site_name" content="DeeLMind">
+<meta property="og:description" content="简介: Dex文件格式讲解">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://deelmind.cn/file/dex/img/1.png">
+<meta property="og:image" content="http://deelmind.cn/file/dex/img/dex.png">
+<meta property="og:image" content="http://deelmind.cn/file/dex/img/header.png">
+<meta property="og:updated_time" content="2018-06-09T09:45:25.557Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dex文件格式">
+<meta name="twitter:description" content="简介: Dex文件格式讲解">
+<meta name="twitter:image" content="http://deelmind.cn/file/dex/img/1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="DeeLMind" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="么么哒">DeeLMind</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">自醒 | 自省</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+
+
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/note">随笔记录</a></li>
+                        
+                            <li><a href="/work">作品展示</a></li>
+                        
+                            <li><a href="/toturial">系统教程</a></li>
+                        
+                            <li><a href="/video">视频教学</a></li>
+                        
+                            <li><a href="/about">作者简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=DeeLMind@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/DeeLMind" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/DeeLMind/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/u/5588510745#_loginLayer_1516970488947" title="weibo">weibo</a>
+                            
+                                <a class="fl twitter" target="_blank" href="https://twitter.com/DeeLMind" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="https://www.linkedin.com/in/%E8%B4%BA%E9%BE%99-%E7%89%9B-364576158/" title="linkedin">linkedin</a>
+                            
+                                <a class="fl facebook" target="_blank" href="https://www.facebook.com/DeeLMind/" title="facebook">facebook</a>
+                            
+                                <a class="fl youtube" target="_blank" href="https://www.youtube.com/channel/UCWrelXDdvGYo6CCsGKMmuSQ?view_as=subscriber" title="youtube">youtube</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://tool.gljlw.com/qq/?qq=759256729" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://deelmind.cn/about/" title="wechat">wechat</a>
+                            
+                                <a class="fl Jianshu" target="_blank" href="https://www.jianshu.com/u/e3b312dc2c98" title="Jianshu">Jianshu</a>
+                            
+                                <a class="fl blibli" target="_blank" href="https://space.bilibili.com/282616786/#/" title="blibli">blibli</a>
+                            
+                                <a class="fl stackoverflow" target="_blank" href="https://stackoverflow.com/users/9187890/deelmind" title="stackoverflow">stackoverflow</a>
+                            
+                                <a class="fl Instagram" target="_blank" href="https://www.instagram.com/DeeLMind/" title="Instagram">Instagram</a>
+                            
+                                <a class="fl googlePlus" target="_blank" href="https://plus.google.com/u/2/105686643108048107214" title="googlePlus">googlePlus</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Frida/" style="font-size: 10px;">Frida</a> <a href="/tags/HOOK/" style="font-size: 10px;">HOOK</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hook/" style="font-size: 10px;">Hook</a> <a href="/tags/IDA/" style="font-size: 10px;">IDA</a> <a href="/tags/IOS/" style="font-size: 10px;">IOS</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 12.5px;">Markdown</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Note/" style="font-size: 15px;">Note</a> <a href="/tags/SVM/" style="font-size: 10px;">SVM</a> <a href="/tags/Sqlmap/" style="font-size: 10px;">Sqlmap</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/Xpose/" style="font-size: 10px;">Xpose</a> <a href="/tags/抓包/" style="font-size: 10px;">抓包</a> <a href="/tags/机器学习/" style="font-size: 17.5px;">机器学习</a> <a href="/tags/渗透/" style="font-size: 10px;">渗透</a> <a href="/tags/漏洞/" style="font-size: 10px;">漏洞</a> <a href="/tags/逆向/" style="font-size: 17.5px;">逆向</a>
+                    </div>
+                </section>
+                
+
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/DeeLMind">DeeLMind（cnBlogs）</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ggsec.cn/">Demonsec</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/QKSword/">QKSword</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://strivemario.github.io/">Strivemario</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://ring3.xyz/">Y11en</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">DeeLMind</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">DeeLMind</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">自醒 | 自省</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/note">随笔记录</a></li>
+                
+                    <li><a href="/work">作品展示</a></li>
+                
+                    <li><a href="/toturial">系统教程</a></li>
+                
+                    <li><a href="/video">视频教学</a></li>
+                
+                    <li><a href="/about">作者简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=DeeLMind@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/DeeLMind" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/DeeLMind/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/5588510745#_loginLayer_1516970488947" title="weibo">weibo</a>
+                    
+                        <a class="twitter" target="_blank" href="https://twitter.com/DeeLMind" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="https://www.linkedin.com/in/%E8%B4%BA%E9%BE%99-%E7%89%9B-364576158/" title="linkedin">linkedin</a>
+                    
+                        <a class="facebook" target="_blank" href="https://www.facebook.com/DeeLMind/" title="facebook">facebook</a>
+                    
+                        <a class="youtube" target="_blank" href="https://www.youtube.com/channel/UCWrelXDdvGYo6CCsGKMmuSQ?view_as=subscriber" title="youtube">youtube</a>
+                    
+                        <a class="QQ" target="_blank" href="http://tool.gljlw.com/qq/?qq=759256729" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://deelmind.cn/about/" title="wechat">wechat</a>
+                    
+                        <a class="Jianshu" target="_blank" href="https://www.jianshu.com/u/e3b312dc2c98" title="Jianshu">Jianshu</a>
+                    
+                        <a class="blibli" target="_blank" href="https://space.bilibili.com/282616786/#/" title="blibli">blibli</a>
+                    
+                        <a class="stackoverflow" target="_blank" href="https://stackoverflow.com/users/9187890/deelmind" title="stackoverflow">stackoverflow</a>
+                    
+                        <a class="Instagram" target="_blank" href="https://www.instagram.com/DeeLMind/" title="Instagram">Instagram</a>
+                    
+                        <a class="googlePlus" target="_blank" href="https://plus.google.com/u/2/105686643108048107214" title="googlePlus">googlePlus</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Dex文件格式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/09/Dex文件格式/" class="article-date">
+      <time datetime="2018-06-09T11:21:35.000Z" itemprop="datePublished">2018-06-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dex文件格式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>简介: Dex文件格式讲解</p>
+<a id="more"></a>
+<h1 id="什么是Dex"><a href="#什么是Dex" class="headerlink" title="什么是Dex"></a>什么是Dex</h1><p><a href="https://source.android.com/devices/tech/dalvik/dex-format" target="_blank" rel="noopener">Dex</a>是Android可执行文件，类似Windows上的PE文件，Linux下的ELF文件，和Mac下的Mach-o文件，只是一中文件格式</p>
+<h1 id="整体文件浏览"><a href="#整体文件浏览" class="headerlink" title="整体文件浏览"></a>整体文件浏览</h1><p>Dex文件内容分布如下图</p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/dex/img/1.png" alt="Alt text"><br></div><br>结构体分布图</p>
+<p><div align="center"><br><img src="http://deelmind.cn/file/dex/img/dex.png" alt="Alt text"><br></div><br><a href="http://deelmind.cn/file/dex/file/DexFile.h" target="_blank" rel="noopener">Dex.h</a>dex头文件下载地址</p>
+<h1 id="Dex文件头"><a href="#Dex文件头" class="headerlink" title="Dex文件头"></a>Dex文件头</h1><figure class="highlight c"><figcaption><span>header_item []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">header_item</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ubyte[<span class="number">8</span>]  magic;</span><br><span class="line">    unit      checksum;</span><br><span class="line">    ubyte[<span class="number">20</span>] signature;</span><br><span class="line">    uint      file_size;</span><br><span class="line">    uint      header_size;</span><br><span class="line">    unit      endian_tag;</span><br><span class="line">    uint      link_size;</span><br><span class="line">    uint      link_off;</span><br><span class="line">    uint      map_off;</span><br><span class="line">    uint      string_ids_size;</span><br><span class="line">    uint      string_ids_off;</span><br><span class="line">    uint      type_ids_size;</span><br><span class="line">    uint      type_ids_off;</span><br><span class="line">    uint      proto_ids_size;</span><br><span class="line">    uint      proto_ids_off;</span><br><span class="line">    uint      filed_ids_size</span><br><span class="line">    uint      filed_ids_off;</span><br><span class="line">    uint      method_ids_size;</span><br><span class="line">    uint      method_ids_off;</span><br><span class="line">    uint      class_defs_size;</span><br><span class="line">    uint      class_defs_off;</span><br><span class="line">    uint      data_size;</span><br><span class="line">    uint      data_off;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><div align="center"><br><img src="http://deelmind.cn/file/dex/img/header.png" alt="Alt text"><br></div></p>
+<h3 id="magic"><a href="#magic" class="headerlink" title="magic"></a>magic</h3><p>magic代表dex中的文件标识，一般被称为魔数,是用来识别dex这种文件的，它可以判断当前的dex文件是否有效，可以看到它用了8个1字节的无符号数来表示,相当于Window PE结构的PE 和 MZ就是一个标志而已。</p>
+<h3 id="checksum"><a href="#checksum" class="headerlink" title="checksum"></a>checksum</h3><p>checksum是dex文件的校验和，使用 alder32 算法校验文件除去 maigc、checksum 外余下的所有文件区域，通过它可以判断dex文件是否被损坏或者被篡改。</p>
+<h3 id="signature"><a href="#signature" class="headerlink" title="signature"></a>signature</h3><p>signature字段用于检验dex文件，使用 SHA-1 算法 hash 除去 magic、checksum 和 signature 外余下的所有文件区域，其实就是把整个dex文件用SHA-1签名得到的一个值。</p>
+<h3 id="file-size"><a href="#file-size" class="headerlink" title="file_size"></a>file_size</h3><p>此Dex文件大小</p>
+<h3 id="header-size"><a href="#header-size" class="headerlink" title="header_size"></a>header_size</h3><p>此Dex的hheader_item头部大小,目前是固定为 0x70</p>
+<h3 id="endian-tag"><a href="#endian-tag" class="headerlink" title="endian_tag"></a>endian_tag</h3><p>大小端标签，dex 文件格式为小端，固定值为 0x12345678 常量</p>
+<h3 id="link-size"><a href="#link-size" class="headerlink" title="link_size"></a>link_size</h3><p>linkSize为0的话表示静态链接,通常情况下它们都为0</p>
+<h3 id="link-off"><a href="#link-off" class="headerlink" title="link_off"></a>link_off</h3><p>通常情况下它们都为0</p>
+<h3 id="map-off"><a href="#map-off" class="headerlink" title="map_off"></a>map_off</h3><p>指定了DexMapList的文件偏移,该 item 属于 data 区里的内容，值要大于等于 data_off 的大小，处于 dex 文件的末端</p>
+<h3 id="string-ids-size"><a href="#string-ids-size" class="headerlink" title="string_ids_size"></a>string_ids_size</h3><p>字符串的个数</p>
+<h3 id="string-ids-off"><a href="#string-ids-off" class="headerlink" title="string_ids_off"></a>string_ids_off</h3><p>字符串的位置偏移</p>
+<h3 id="type-ids-size"><a href="#type-ids-size" class="headerlink" title="type_ids_size"></a>type_ids_size</h3><p>数据类型大小</p>
+<h3 id="type-ids-off"><a href="#type-ids-off" class="headerlink" title="type_ids_off"></a>type_ids_off</h3><p>数据类型位置偏移</p>
+<h3 id="proto-ids-size"><a href="#proto-ids-size" class="headerlink" title="proto_ids_size"></a>proto_ids_size</h3><p>method prototype 代表 java 语言里的一个 method 的原型</p>
+<h3 id="proto-ids-off"><a href="#proto-ids-off" class="headerlink" title="proto_ids_off"></a>proto_ids_off</h3><p>位置偏移</p>
+<h3 id="filed-ids-size"><a href="#filed-ids-size" class="headerlink" title="filed_ids_size"></a>filed_ids_size</h3><p>字段名的大小</p>
+<h3 id="filed-ids-off"><a href="#filed-ids-off" class="headerlink" title="filed_ids_off"></a>filed_ids_off</h3><p>字段名的位置偏移</p>
+<h3 id="method-ids-size"><a href="#method-ids-size" class="headerlink" title="method_ids_size"></a>method_ids_size</h3><p>方法的个数</p>
+<h3 id="method-ids-off"><a href="#method-ids-off" class="headerlink" title="method_ids_off"></a>method_ids_off</h3><p>方法的位置偏移</p>
+<h3 id="class-defs-size"><a href="#class-defs-size" class="headerlink" title="class_defs_size"></a>class_defs_size</h3><p>类的个数</p>
+<h3 id="class-defs-off"><a href="#class-defs-off" class="headerlink" title="class_defs_off"></a>class_defs_off</h3><p>类的位置偏移</p>
+<h3 id="data-size"><a href="#data-size" class="headerlink" title="data_size"></a>data_size</h3><p>具体数据的大小</p>
+<h3 id="data-off"><a href="#data-off" class="headerlink" title="data_off"></a>data_off</h3><p>数据的位置偏移</p>
+<h1 id="String-ids"><a href="#String-ids" class="headerlink" title="String_ids"></a>String_ids</h1><figure class="highlight c"><figcaption><span>String []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ubyte    <span class="number">8</span>-bit unsinged <span class="keyword">int</span></span><br><span class="line">uint     <span class="number">32</span>-bit <span class="keyword">unsigned</span> <span class="keyword">int</span>, little-endian</span><br><span class="line">uleb128  <span class="keyword">unsigned</span> LEB128, valriable length</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">string_ids_item</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    uint string_data_off;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">string_data_item</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    uleb128 utf16_size;</span><br><span class="line">    ubyte   data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>string 顾名思义就是指向字符串，但是它不是直接指向字符串的，往下看<br>string_ids_off 指向一块内容，是包含以上结构体的一个数组<br>string_ids_item-&gt;string_data_off 才是真正字符串的位置，而string_data_item才是真正的字符串</p>
+<h1 id="Type-ids"><a href="#Type-ids" class="headerlink" title="Type_ids"></a>Type_ids</h1><figure class="highlight c"><figcaption><span>Type []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">type_ids_item</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    uint descriptor_idx;  <span class="comment">//--&gt;string_ids</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本身是一个由这个结构体组成的一个数组<br>descriptor_idx 是指向string这个数组的一个下标</p>
+<h1 id="Proto-ids"><a href="#Proto-ids" class="headerlink" title="Proto_ids"></a>Proto_ids</h1><figure class="highlight c"><figcaption><span>Proto []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">uint <span class="number">32</span>-bit <span class="keyword">unsigned</span> <span class="keyword">int</span>, little-endian</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proto_id_item</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    uint shorty_idx;        <span class="comment">//--&gt;string_ids</span></span><br><span class="line">    uint return_type_idx;    <span class="comment">//--&gt;type_ids</span></span><br><span class="line">    uint parameters_off;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexTypeList</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u4 size;                <span class="comment">/*DexTypeItem的个数*/</span>  </span><br><span class="line">    DexTypeItem <span class="built_in">list</span>[<span class="number">1</span>];    <span class="comment">/*DexTypeItem结构*/</span>  </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexTypeItem</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u2 typeIdx;             <span class="comment">/*指向DexTypeId列表的索引*/</span>  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>parameters_off 指向 DexTypeList-&gt; 指向 DexTypeItem-&gt;typeIdx 是指向 type_id 这个个数组的一个下标</p>
+<h1 id="Filed-ids"><a href="#Filed-ids" class="headerlink" title="Filed_ids"></a>Filed_ids</h1><figure class="highlight c"><figcaption><span>Filed []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexFieldId</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u2 classIdx;        <span class="comment">/*类的类型，指向DexTypeId列表的索引*/</span>  </span><br><span class="line">    u2 typeIdx;         <span class="comment">/*字段类型，指向DexTypeId列表的索引*/</span>  </span><br><span class="line">    u4 nameIdx;         <span class="comment">/*字段名，指向DexStringId列表的索引*/</span>  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<h1 id="Method-ids"><a href="#Method-ids" class="headerlink" title="Method_ids"></a>Method_ids</h1><figure class="highlight c"><figcaption><span>Method []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexMethodId</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u2 classIdx;        <span class="comment">/*类的类型，指向DexTypeId列表的索引*/</span>  </span><br><span class="line">    u2 protoIdx;        <span class="comment">/*声明类型，指向DexProtoId列表的索引*/</span>  </span><br><span class="line">    u4 nameIdx;         <span class="comment">/*方法名，指向DexStringId列表的索引*/</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Class-defs"><a href="#Class-defs" class="headerlink" title="Class_defs"></a>Class_defs</h1><figure class="highlight c"><figcaption><span>Class []</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexClassDef</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u4 classIdx;        <span class="comment">/*类的类型，指向DexTypeId列表的索引*/</span>  </span><br><span class="line">    u4 accessFlags;     <span class="comment">/*访问标志*/</span>  </span><br><span class="line">    u4 superclassIdx;   <span class="comment">/*父类类型，指向DexTypeId列表的索引*/</span>  </span><br><span class="line">    u4 interfacesOff;   <span class="comment">/*接口，指向DexTypeList的偏移*/</span>  </span><br><span class="line">    u4 sourceFileIdx;   <span class="comment">/*源文件名，指向DexStringId列表的索引*/</span>  </span><br><span class="line">    u4 annotationsOff;  <span class="comment">/*注解，指向DexAnnotationsDirectoryItem结构*/</span>  </span><br><span class="line">    u4 classDataOff;    <span class="comment">/*指向DexClassData结构的偏移*/</span>  </span><br><span class="line">    u4 staticValuesOff; <span class="comment">/*指向DexEncodedArray结构的偏移*/</span>  </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexClassData</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    DexClassDataHeader          header;         <span class="comment">/*指定字段与方法的个数*/</span>  </span><br><span class="line">    DexField*           staticFields;       <span class="comment">/*静态字段，DexField结构*/</span>  </span><br><span class="line">    DexField*           instanceFields；     <span class="comment">/*实例字段，DexField结构*/</span>  </span><br><span class="line">    DexMethod*          directMethods;      <span class="comment">/*直接方法，DexMethod结构*/</span>  </span><br><span class="line">    DexMethod*          virtualMethods;     <span class="comment">/*虚方法，DexMethod结构*/</span>  </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexClassDataHeader</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u4 staticFieldsSize;    <span class="comment">/*静态字段个数*/</span>  </span><br><span class="line">    u4 instanceFieldsSize;  <span class="comment">/*实例字段个数*/</span>  </span><br><span class="line">    u4 directMethodsSize;   <span class="comment">/*直接方法个数*/</span>  </span><br><span class="line">    u4 virtualMethodsSize;  <span class="comment">/*虚方法个数*/</span>  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexField</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u4 fieldIdx;    <span class="comment">/*指向DexFieldId的索引*/</span>  </span><br><span class="line">    u4 accessFlags; <span class="comment">/*访问标志*/</span>  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexMethod</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    u4 methodIdx;   <span class="comment">/*指向DexMethodId的索引*/</span>  </span><br><span class="line">    u4 accessFlags; <span class="comment">/*访问标志*/</span>  </span><br><span class="line">    u4 codeOff;     <span class="comment">/*指向DexCode结构的偏移*/</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>谢谢支持</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏</div>
+            <div class="shang_payselect">
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/09/Dex文件格式/">Dex文件格式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 DeeLMind 的个人博客">DeeLMind</a></p>
+        <p><span>发布时间:</span>2018年06月09日 - 19时21分</p>
+        <p><span>最后更新:</span>2018年06月09日 - 17时45分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/09/Dex文件格式/" title="Dex文件格式">http://deelmind.github.com/2018/06/09/Dex文件格式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://deelmind.github.com/2018/06/09/Dex文件格式/　　作者: DeeLMind" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最新Android-Studio搭建Xposed-Hook环境</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Dex"><span class="toc-number">1.</span> <span class="toc-text">什么是Dex</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#整体文件浏览"><span class="toc-number">2.</span> <span class="toc-text">整体文件浏览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dex文件头"><span class="toc-number">3.</span> <span class="toc-text">Dex文件头</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#magic"><span class="toc-number">3.0.1.</span> <span class="toc-text">magic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#checksum"><span class="toc-number">3.0.2.</span> <span class="toc-text">checksum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#signature"><span class="toc-number">3.0.3.</span> <span class="toc-text">signature</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-size"><span class="toc-number">3.0.4.</span> <span class="toc-text">file_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#header-size"><span class="toc-number">3.0.5.</span> <span class="toc-text">header_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#endian-tag"><span class="toc-number">3.0.6.</span> <span class="toc-text">endian_tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#link-size"><span class="toc-number">3.0.7.</span> <span class="toc-text">link_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#link-off"><span class="toc-number">3.0.8.</span> <span class="toc-text">link_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map-off"><span class="toc-number">3.0.9.</span> <span class="toc-text">map_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-ids-size"><span class="toc-number">3.0.10.</span> <span class="toc-text">string_ids_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-ids-off"><span class="toc-number">3.0.11.</span> <span class="toc-text">string_ids_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type-ids-size"><span class="toc-number">3.0.12.</span> <span class="toc-text">type_ids_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type-ids-off"><span class="toc-number">3.0.13.</span> <span class="toc-text">type_ids_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proto-ids-size"><span class="toc-number">3.0.14.</span> <span class="toc-text">proto_ids_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proto-ids-off"><span class="toc-number">3.0.15.</span> <span class="toc-text">proto_ids_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filed-ids-size"><span class="toc-number">3.0.16.</span> <span class="toc-text">filed_ids_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filed-ids-off"><span class="toc-number">3.0.17.</span> <span class="toc-text">filed_ids_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#method-ids-size"><span class="toc-number">3.0.18.</span> <span class="toc-text">method_ids_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#method-ids-off"><span class="toc-number">3.0.19.</span> <span class="toc-text">method_ids_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-defs-size"><span class="toc-number">3.0.20.</span> <span class="toc-text">class_defs_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-defs-off"><span class="toc-number">3.0.21.</span> <span class="toc-text">class_defs_off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-size"><span class="toc-number">3.0.22.</span> <span class="toc-text">data_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-off"><span class="toc-number">3.0.23.</span> <span class="toc-text">data_off</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String-ids"><span class="toc-number">4.</span> <span class="toc-text">String_ids</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Type-ids"><span class="toc-number">5.</span> <span class="toc-text">Type_ids</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Proto-ids"><span class="toc-number">6.</span> <span class="toc-text">Proto_ids</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Filed-ids"><span class="toc-number">7.</span> <span class="toc-text">Filed_ids</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method-ids"><span class="toc-number">8.</span> <span class="toc-text">Method_ids</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Class-defs"><span class="toc-number">9.</span> <span class="toc-text">Class_defs</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/" title="下一篇: 最新Android-Studio搭建Xposed-Hook环境">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/09/Dex文件格式/">Dex文件格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/09/最新Android-Studio搭建Xposed-Hook环境/">最新Android-Studio搭建Xposed-Hook环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/frida-Hook-Android/">frida-Hook-Android</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/抓手机包/">抓手机包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/UNICODE显示漏洞Windows/">UNICODE显示漏洞Windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/AndroidStudio调试Smali/">AndroidStudio调试Smali</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/Windows使用IDA调试IOS应用/">Windows使用IDA调试IOS应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/26/什么是embedding-words/">什么是embedding words</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/什么是one-hot/">什么是one_hot</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/制作MNIST数据格式文件/">制作MNIST数据格式文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/17/IDA调试Android/">IDA调试Android</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Sqlmap详细总结/">Sqlmap详细总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/缺少头文件unistd-h/">缺少头文件unistd.h</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/Hexo莫名其妙错误/">Hexo莫名其妙错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown语法/">MarkDown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MarkDown数学符号/">MarkDown数学符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/机器学习-SVM/">机器学习-SVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/27/GitHub单独下载文件夹/">GitHub单独下载文件夹</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 DeeLMind
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >累计访问量: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
